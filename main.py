@@ -28,10 +28,10 @@ class Registration(db.Model):
 def home():
 	return render_template('index.html')
 
-@app.route("/login")
+@app.route("/login",  methods=['GET', 'POST'])
 def login():
 	if(request.method == "POST"):
-		pass
+		return render_template('profile.html')
 	else:
 		return render_template('login.html')
 

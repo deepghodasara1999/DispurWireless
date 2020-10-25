@@ -12,7 +12,7 @@
     <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
   </head>
   <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" method="post" action="/login">
       <!-- <img class="mb-4" src="{{ url_for('static', filename='main.png') }}" alt="" width="72" height="72"> -->
       <!-- <img class="mb-4" src="{{ url_for('static', filename='main.png') }}" alt="" width="400" height="200"> -->
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

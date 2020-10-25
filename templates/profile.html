@@ -1,0 +1,2572 @@
+<html>
+<head>
+  <style >
+    * {
+  margin: 0;
+  font-family: "Geneva", sans-serif;
+}
+#main {
+  position: absolute;
+  background-color: #f0f6fa;
+  width: 85%;
+  left: 15%;
+  transition: 0.5s;
+}
+#side_menu {
+  position: absolute;
+  background-color: #ffffff;
+  width: 15%;
+}
+.side_title {
+  width: 90%;
+  height: 15%;
+  margin-left: 5%;
+  margin-top: 20%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.side_text_st {
+  width: 90%;
+  text-align: left;
+  font-size: 14px;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+/*Divisor line*/
+.divisor_line{
+  position:relative;
+  margin-top:10%;
+  margin-bottom:10%;
+  border-bottom:1px dashed;
+}
+.divisor_icon{
+  position:absolute;
+  width:30px;
+  height:15px;
+  left:40%;
+  margin-top:-8px;
+}
+/*END Divisor line*/
+/*Missing doc Alert */
+.access_doc_btn {
+  position: relative;
+  width: 90%;
+  height: 30px;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+.access_doc_icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.access_doc_text {
+  position: absolute;
+  margin-left:35px;
+  top:5px;
+  width: 80%;
+  height: 25px;
+  font-size: 16px;
+  color:#000000;
+}
+.doc_title {
+  position: relative;
+  width: 90%;
+  height: 30px;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+.profile_arrow_area {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 4px;
+  left: 5px;
+  transform: rotate(-90deg);
+  transform-origin: 60% 30%;
+  cursor: pointer;
+}
+.business_arrow_area {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 4px;
+  left: 5px;
+  transform: rotate(-90deg);
+  transform-origin: 60% 30%;
+  cursor: pointer;
+}
+#profile_doc_arrow_control {
+  display: none;
+}
+#profile_doc_arrow_control:checked ~ * .profile_arrow_area {
+  transform: rotate(0deg);
+  top: 6px;
+  left: 15px;
+}
+#business_doc_arrow_control {
+  display: none;
+}
+#business_doc_arrow_control:checked ~ * .business_arrow_area {
+  transform: rotate(0deg);
+  top: 6px;
+  left: 15px;
+}
+.doc_title_text {
+  position: absolute;
+  width: 30%;
+  height: 70%;
+  top: 15%;
+  left: 20%;
+}
+.alert_icon_area {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 5%;
+  right: 10%;
+  fill: red;
+}
+.profile_doc_tbl {
+  display: ;
+  position: relative;
+  width: 90%;
+  margin-bottom: 2%;
+  margin-left: 5%;
+  table-layout: auto;
+  text-align: right;
+  visibility: visible;
+  transition: 1s;
+}
+.business_doc_tbl {
+  display: none;
+  position: relative;
+  width: 90%;
+  margin-bottom: 2%;
+  margin-left: 5%;
+  margin-top: 10%;
+  table-layout: auto;
+  text-align: right;
+  visibility: hidden;
+  transition: 1s;
+}
+.circle_alert {
+  width: 15px;
+  height: 15px;
+  margin-left: 20px;
+  background-color: red;
+  border-radius: 15px;
+}
+#profile_doc_arrow_control:checked ~ * .profile_doc_tbl {
+  display: block;
+  visibility: visible;
+}
+#business_doc_arrow_control:checked ~ * .business_doc_tbl {
+  display: block;
+  visibility: visible;
+}
+.row_text{
+  width:80%;
+  word-wrap: break-word;
+    cursor:pointer;
+}
+.title_info{
+  position:absolute;
+  display:none;
+  width:75%;
+  left:70%;
+  top:1%;
+  font-size:10px;
+  padding:2%;
+  text-align: justify;
+  word-wrap:break-word;
+  border:.5px solid;
+  border-radius:5px;
+  background-color:#ffffff;
+  z-index:1;
+}
+#control_title_info{
+    display:none;
+}
+#control_title_info:hover ~ * .title_info{
+  display:block;
+}
+/*END Missing doc Alert */
+.expand_area {
+  margin-top: 2px;
+  margin-left: -3%;
+  width: 30px;
+  height: 30px;
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: 0.5s;
+}
+#control_expand {
+  display: none;
+}
+#control_expand:checked ~ #main {
+  width: 100%;
+  left: 0px;
+}
+#control_expand:checked ~ * .expand_area {
+  margin-left: 1%;
+}
+#top_bar {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  border-bottom-style: solid;
+  border-bottom-color: #707070;
+  border-bottom-width: 0.1px;
+  background-color: #ffffff;
+}
+#top_profile {
+  width: 25%;
+  height: 99%;
+  background-color: #ffffff;
+}
+.profile_image {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  margin-left: 2%;
+  margin-top: 0.75%;
+  border-radius: 60%;
+  padding-left: 0.3%;
+  background-color: #eeeeee;
+}
+.profile_info {
+  margin-left: 40%;
+  background-color: #ffffff;
+  width: 60%;
+  height: 70px;
+  text-align: left;
+}
+
+.st1_text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.st2_text {
+  font-size: 16px;
+}
+.top_btn_area {
+  position: absolute;
+  display: grid;
+  grid-auto-columns: 50%;
+  width: 25%;
+  height: 100%;
+  top: 0px;
+  right: 0;
+}
+.top_btn_grid1 {
+  grid-area: 1/1;
+  padding-top: 10%;
+}
+.top_btn_grid2 {
+  grid-area: 1/2;
+  padding-top: 10%;
+}
+
+a {
+  text-decoration-line: none;
+}
+.history_clasic_btn {
+  position: absolute;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  margin-left: 15%;
+  border-style: solid;
+  border-width: 0.2px;
+  border-color: #707070;
+  cursor: pointer;
+  background-color: #ffffff;
+  text-align: center;
+  color: #000000;
+  font-size: 14px;
+}
+.history_clasic_btn_text {
+  margin-top: 15%;
+}
+.history_clasic_btn:hover {
+  background-color: #4caaf3;
+  color: #ffffff;
+}
+/*
+Profile clasic area
+********************/
+.profile_clasic_area {
+  position: relative;
+  display: grid;
+  grid-auto-columns: 50%;
+  grid-gap: 0px;
+  width: 90%;
+  height: 380px;
+  margin: 3%;
+  border-radius: 5px;
+  box-shadow: 5px 5px 30px rgb(76, 170, 243, 0.2);
+  background-color: #ffffff;
+}
+.profile_first_grid {
+  grid-area: 2 / 1;
+  padding: 2%;
+}
+.profile_second_grid {
+  grid-area: 2 / 2;
+  padding: 2%;
+}
+/*END clasic area*/
+/*title clasic area*/
+.profile_a_title {
+  width: 100%;
+  height: 50px;
+  grid-area: 1 / span 2;
+  box-shadow: 2px 2px 20px rgb(76, 170, 243, 0.2);
+  background-color: #f1f6f9;
+}
+.profile_a_title_var {
+  width: 50%;
+  margin-top: 1%;
+  margin-left: 3%;
+  font-size: 20px;
+  font-weight: bold;
+}
+.edit_clasic_btn {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  margin-left: 85%;
+  margin-top: -3.3%;
+  background-color: #ffffff;
+  text-align: center;
+  color: #000000;
+  font-size: 14px;
+}
+.edit_clasic_btn_text {
+  position: relative;
+  top: 30%;
+}
+.edit_clasic_btn:hover {
+  background-color: #4caaf3;
+  color: #ffffff;
+}
+/*END title clasic area*/
+/*name field*/
+.name_field {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+.name_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#name_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#name_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.name_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.name_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#name_Showcontrol_edit_singleline {
+  display: none;
+}
+#name_Showcontrol_edit_singleline:hover ~ * .name_edit_pen {
+  visibility: visible;
+}
+#name_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#name_control_edit_singleline {
+  display: none;
+}
+#name_singleForm {
+  visibility: hidden;
+}
+#name_control_edit_singleline:checked ~ * #name_singleForm {
+  visibility: visible;
+}
+#name_control_edit_singleline:checked ~ * #name_area_field {
+  visibility: hidden;
+}
+#name_control_edit_singleline:checked ~ * .name_edit_pen {
+  visibility: hidden;
+}
+.name_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.name_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.name_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#name_submit_control {
+  visibility: hidden;
+}
+/*END name field*/
+/*street field*/
+.street_field {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+.street_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#street_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#street_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.street_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.street_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#street_Showcontrol_edit_singleline {
+  display: none;
+}
+#street_Showcontrol_edit_singleline:hover ~ * .street_edit_pen {
+  visibility: visible;
+}
+#street_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#street_control_edit_singleline {
+  display: none;
+}
+#street_singleForm {
+  visibility: hidden;
+}
+#street_control_edit_singleline:checked ~ * #street_singleForm {
+  visibility: visible;
+}
+#street_control_edit_singleline:checked ~ * #street_area_field {
+  visibility: hidden;
+}
+#street_control_edit_singleline:checked ~ * .street_edit_pen {
+  visibility: hidden;
+}
+.street_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.street_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.street_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#street_submit_control {
+  visibility: hidden;
+}
+/*END street field*/
+/*city field*/
+.city_field {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+.city_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#city_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#city_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.city_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.city_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#city_Showcontrol_edit_singleline {
+  display: none;
+}
+#city_Showcontrol_edit_singleline:hover ~ * .city_edit_pen {
+  visibility: visible;
+}
+#city_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#city_control_edit_singleline {
+  display: none;
+}
+#city_singleForm {
+  visibility: hidden;
+}
+#city_control_edit_singleline:checked ~ * #city_singleForm {
+  visibility: visible;
+}
+#city_control_edit_singleline:checked ~ * #city_area_field {
+  visibility: hidden;
+}
+#city_control_edit_singleline:checked ~ * .city_edit_pen {
+  visibility: hidden;
+}
+.city_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.city_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.city_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#city_submit_control {
+  visibility: hidden;
+}
+/*END city field*/
+/*state field*/
+.state_field {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+.state_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#state_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#state_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.state_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.state_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#state_Showcontrol_edit_singleline {
+  display: none;
+}
+#state_Showcontrol_edit_singleline:hover ~ * .state_edit_pen {
+  visibility: visible;
+}
+.state_box {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#state_control_edit_singleline {
+  display: none;
+}
+#state_singleForm {
+  visibility: hidden;
+}
+#state_control_edit_singleline:checked ~ * #state_singleForm {
+  visibility: visible;
+}
+
+#state_control_edit_singleline:checked ~ * #state_area_field {
+  visibility: hidden;
+}
+
+#state_control_edit_singleline:checked ~ * .state_edit_pen {
+  visibility: hidden;
+}
+.state_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.state_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.state_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#state_submit_control {
+  visibility: hidden;
+}
+/*END state field*/
+/*code field*/
+.code_field {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+.code_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#code_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#code_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.code_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.code_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#code_Showcontrol_edit_singleline {
+  display: none;
+}
+#code_Showcontrol_edit_singleline:hover ~ * .code_edit_pen {
+  visibility: visible;
+}
+#code_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#code_control_edit_singleline {
+  display: none;
+}
+#code_singleForm {
+  visibility: hidden;
+}
+#code_control_edit_singleline:checked ~ * #code_singleForm {
+  visibility: visible;
+}
+#code_control_edit_singleline:checked ~ * #code_area_field {
+  visibility: hidden;
+}
+#code_control_edit_singleline:checked ~ * .code_edit_pen {
+  visibility: hidden;
+}
+.code_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.code_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.code_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#code_submit_control {
+  visibility: hidden;
+}
+/*END code field*/
+/*mobile field*/
+.mobile_field {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+.mobile_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#mobile_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#mobile_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.mobile_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.mobile_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#mobile_Showcontrol_edit_singleline {
+  display: none;
+}
+#mobile_Showcontrol_edit_singleline:hover ~ * .mobile_edit_pen {
+  visibility: visible;
+}
+#mobile_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#mobile_control_edit_singleline {
+  display: none;
+}
+#mobile_singleForm {
+  visibility: hidden;
+}
+#mobile_control_edit_singleline:checked ~ * #mobile_singleForm {
+  visibility: visible;
+}
+#mobile_control_edit_singleline:checked ~ * #mobile_area_field {
+  visibility: hidden;
+}
+#mobile_control_edit_singleline:checked ~ * .mobile_edit_pen {
+  visibility: hidden;
+}
+.mobile_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.mobile_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.mobile_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#mobile_submit_control {
+  visibility: hidden;
+}
+/*END mobile field*/
+/*phone field*/
+.phone_field {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+.phone_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#phone_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#phone_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.phone_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.phone_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#phone_Showcontrol_edit_singleline {
+  display: none;
+}
+#phone_Showcontrol_edit_singleline:hover ~ * .phone_edit_pen {
+  visibility: visible;
+}
+#phone_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#phone_control_edit_singleline {
+  display: none;
+}
+#phone_singleForm {
+  visibility: hidden;
+}
+#phone_control_edit_singleline:checked ~ * #phone_singleForm {
+  visibility: visible;
+}
+#phone_control_edit_singleline:checked ~ * #phone_area_field {
+  visibility: hidden;
+}
+#phone_control_edit_singleline:checked ~ * .phone_edit_pen {
+  visibility: hidden;
+}
+.phone_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.phone_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.phone_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#phone_submit_control {
+  visibility: hidden;
+}
+/*END phone field*/
+/*email field*/
+.email_field {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+.email_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#email_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#email_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.email_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.email_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#email_Showcontrol_edit_singleline {
+  display: none;
+}
+#email_Showcontrol_edit_singleline:hover ~ * .email_edit_pen {
+  visibility: visible;
+}
+#email_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#email_control_edit_singleline {
+  display: none;
+}
+#email_singleForm {
+  visibility: hidden;
+}
+#email_control_edit_singleline:checked ~ * #email_singleForm {
+  visibility: visible;
+}
+#email_control_edit_singleline:checked ~ * #email_area_field {
+  visibility: hidden;
+}
+#email_control_edit_singleline:checked ~ * .email_edit_pen {
+  visibility: hidden;
+}
+.email_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.email_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.email_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#email_submit_control {
+  visibility: hidden;
+}
+/*END email field*/
+/*******************
+END Profile clasic Area
+*/
+
+/*
+Company clasic Area
+******************/
+/*.company_clasic_area {
+  position: relative;
+  display: grid;
+  grid-auto-columns: 50%;
+  grid-gap: 0px;
+  width: 90%;
+  height: 380px;
+  margin: 3%;
+  border-radius: 5px;
+  box-shadow: 5px 5px 30px rgb(76, 170, 243, 0.2);
+  background-color: #ffffff;
+}
+.company_first_grid {
+  grid-area: 2 / 1;
+  padding: 2%;
+}
+.company_second_grid {
+  grid-area: 2 / 2;
+  padding: 2%;
+}
+/*title company clasic area*/
+.company_a_title {
+  grid-area: 1 / span 2;
+  height: 50px;
+  box-shadow: 2px 2px 20px rgb(76, 170, 243, 0.2);
+  background-color: #f1f6f9;
+}
+.company_a_title_var {
+  margin-top: 15px;
+  margin-left: 3%;
+  font-size: 20px;
+  font-weight: bold;
+}
+/*END company title clasic area*/
+/*company name field*/
+.company_name_field {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+.company_name_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#company_name_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#company_name_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.company_name_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.company_name_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#company_name_Showcontrol_edit_singleline {
+  display: none;
+}
+#company_name_Showcontrol_edit_singleline:hover ~ * .company_name_edit_pen {
+  visibility: visible;
+}
+#company_name_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#company_name_control_edit_singleline {
+  display: none;
+}
+#company_name_singleForm {
+  visibility: hidden;
+}
+#company_name_control_edit_singleline:checked ~ * #company_name_singleForm {
+  visibility: visible;
+}
+#company_name_control_edit_singleline:checked ~ * #company_name_area_field {
+  visibility: hidden;
+}
+#company_name_control_edit_singleline:checked ~ * .company_name_edit_pen {
+  visibility: hidden;
+}
+.company_name_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.company_name_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.company_name_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#company_name_submit_control {
+  visibility: hidden;
+}
+/*END company name field*/
+/*company street field*/
+.company_street_field {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+.company_street_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#company_street_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#company_street_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.company_street_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.company_street_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#company_street_Showcontrol_edit_singleline {
+  display: none;
+}
+#company_street_Showcontrol_edit_singleline:hover ~ * .company_street_edit_pen {
+  visibility: visible;
+}
+#company_street_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#company_street_control_edit_singleline {
+  display: none;
+}
+#company_street_singleForm {
+  visibility: hidden;
+}
+#company_street_control_edit_singleline:checked ~ * #company_street_singleForm {
+  visibility: visible;
+}
+#company_street_control_edit_singleline:checked ~ * #company_street_area_field {
+  visibility: hidden;
+}
+#company_street_control_edit_singleline:checked ~ * .company_street_edit_pen {
+  visibility: hidden;
+}
+.company_street_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.company_street_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.company_street_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#company_street_submit_control {
+  visibility: hidden;
+}
+/*END company street field*/
+/*company city field*/
+.company_city_field {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+.company_city_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#company_city_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#company_city_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.company_city_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.company_city_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#company_city_Showcontrol_edit_singleline {
+  display: none;
+}
+#company_city_Showcontrol_edit_singleline:hover ~ * .company_city_edit_pen {
+  visibility: visible;
+}
+#company_city_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#company_city_control_edit_singleline {
+  display: none;
+}
+#company_city_singleForm {
+  visibility: hidden;
+}
+#company_city_control_edit_singleline:checked ~ * #company_city_singleForm {
+  visibility: visible;
+}
+#company_city_control_edit_singleline:checked ~ * #company_city_area_field {
+  visibility: hidden;
+}
+#company_city_control_edit_singleline:checked ~ * .company_city_edit_pen {
+  visibility: hidden;
+}
+.company_city_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.company_city_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.company_city_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#company_city_submit_control {
+  visibility: hidden;
+}
+/*END company city field*/
+/*company state field*/
+.company_state_field {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+.company_state_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#company_state_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#company_state_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.company_state_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.company_state_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#company_state_Showcontrol_edit_singleline {
+  display: none;
+}
+#company_state_Showcontrol_edit_singleline:hover ~ * .company_state_edit_pen {
+  visibility: visible;
+}
+#company_state_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#company_state_control_edit_singleline {
+  display: none;
+}
+#company_state_singleForm {
+  visibility: hidden;
+}
+#company_state_control_edit_singleline:checked ~ * #company_state_singleForm {
+  visibility: visible;
+}
+#company_state_control_edit_singleline:checked ~ * #company_state_area_field {
+  visibility: hidden;
+}
+#company_state_control_edit_singleline:checked ~ * .company_state_edit_pen {
+  visibility: hidden;
+}
+.company_state_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.company_state_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.company_state_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#company_state_submit_control {
+  visibility: hidden;
+}
+/*END company state field*/
+/*company code field*/
+.company_code_field {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+.company_code_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#company_code_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#company_code_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.company_code_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.company_code_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#company_code_Showcontrol_edit_singleline {
+  display: none;
+}
+#company_code_Showcontrol_edit_singleline:hover ~ * .company_code_edit_pen {
+  visibility: visible;
+}
+#company_code_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 20px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#company_code_control_edit_singleline {
+  display: none;
+}
+#company_code_singleForm {
+  visibility: hidden;
+}
+#company_code_control_edit_singleline:checked ~ * #company_code_singleForm {
+  visibility: visible;
+}
+#company_code_control_edit_singleline:checked ~ * #company_code_area_field {
+  visibility: hidden;
+}
+#company_code_control_edit_singleline:checked ~ * .company_code_edit_pen {
+  visibility: hidden;
+}
+.company_code_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.company_code_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.company_code_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#company_code_submit_control {
+  visibility: hidden;
+}
+/*END company code field*/
+/*company primary phone field*/
+.company_primary_phone_field {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+.company_primary_phone_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#company_primary_phone_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#company_primary_phone_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.company_primary_phone_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.company_primary_phone_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#company_primary_phone_Showcontrol_edit_singleline {
+  display: none;
+}
+#company_primary_phone_Showcontrol_edit_singleline:hover
+  ~ *
+  .company_primary_phone_edit_pen {
+  visibility: visible;
+}
+#company_primary_phone_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#company_primary_phone_control_edit_singleline {
+  display: none;
+}
+#company_primary_phone_singleForm {
+  visibility: hidden;
+}
+#company_primary_phone_control_edit_singleline:checked
+  ~ *
+  #company_primary_phone_singleForm {
+  visibility: visible;
+}
+#company_primary_phone_control_edit_singleline:checked
+  ~ *
+  #company_primary_phone_area_field {
+  visibility: hidden;
+}
+#company_primary_phone_control_edit_singleline:checked
+  ~ *
+  .company_primary_phone_edit_pen {
+  visibility: hidden;
+}
+.company_primary_phone_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.company_primary_phone_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.company_primary_phone_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#company_primary_phone_submit_control {
+  visibility: hidden;
+}
+/*END company primary phone field*/
+/*secundary phone field*/
+.company_secundary_phone_field {
+  position: relative;
+  width: 440px;
+  height: 60px;
+}
+.company_secundary_phone_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#company_secundary_phone_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#company_secundary_phone_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.company_secundary_phone_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.company_secundary_phone_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#company_secundary_phone_Showcontrol_edit_singleline {
+  display: none;
+}
+#company_secundary_phone_Showcontrol_edit_singleline:hover
+  ~ *
+  .company_secundary_phone_edit_pen {
+  visibility: visible;
+}
+#company_secundary_phone_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#company_secundary_phone_control_edit_singleline {
+  display: none;
+}
+#company_secundary_phone_singleForm {
+  visibility: hidden;
+}
+#company_secundary_phone_control_edit_singleline:checked
+  ~ *
+  #company_secundary_phone_singleForm {
+  visibility: visible;
+}
+#company_secundary_phone_control_edit_singleline:checked
+  ~ *
+  #company_secundary_phone_area_field {
+  visibility: hidden;
+}
+#company_secundary_phone_control_edit_singleline:checked
+  ~ *
+  .company_secundary_phone_edit_pen {
+  visibility: hidden;
+}
+.company_secundary_phone_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.company_secundary_phone_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.company_secundary_phone_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#company_secundary_phone_submit_control {
+  visibility: hidden;
+}
+/*END company secundary phone field*/
+/*company email field*/
+.company_email_field {
+  position: relative;
+  width: 400px;
+  height: 60px;
+}
+.company_email_label_field {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  top: 30%;
+  color: #707070;
+  font-size: 15px;
+}
+#company_email_area_field {
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  right: 0px;
+  top: 15%;
+}
+#company_email_area_field:hover {
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+}
+.company_email_text_field_area {
+  position: absolute;
+  width: 98%;
+  top: 25%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+}
+.company_email_edit_pen {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  visibility: hidden;
+}
+#company_email_Showcontrol_edit_singleline {
+  display: none;
+}
+#company_email_Showcontrol_edit_singleline:hover ~ * .company_email_edit_pen {
+  visibility: visible;
+}
+#company_email_inputText {
+  position: absolute;
+  width: 98%;
+  height: 80%;
+  right: 0px;
+  text-align: left;
+  font-size: 15px;
+  border: 1px solid #4caaf3;
+  border-radius: 5px;
+  background-color: #f0f6fa;
+}
+#company_email_control_edit_singleline {
+  display: none;
+}
+#company_email_singleForm {
+  visibility: hidden;
+}
+#company_email_control_edit_singleline:checked ~ * #company_email_singleForm {
+  visibility: visible;
+}
+#company_email_control_edit_singleline:checked ~ * #company_email_area_field {
+  visibility: hidden;
+}
+#company_email_control_edit_singleline:checked ~ * .company_email_edit_pen {
+  visibility: hidden;
+}
+.company_email_submit_and_cancel_btn {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  right: -75px;
+}
+.company_email_submit_btn {
+  position: absolute;
+  top: 10%;
+  width: 40%;
+  cursor: pointer;
+}
+.company_email_cancel_btn {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 40%;
+  cursor: pointer;
+}
+#company_email_submit_control {
+  visibility: hidden;
+}
+/*END company email field*/
+/*******************
+END Company clasic Area
+*/
+/*
+Logo Area
+**********/
+.logo_area {
+  position: relative;
+  width: 20%;
+  margin-left: 70%;
+  margin-bottom: 5%;
+}
+#guide {
+  position: absolute;
+  width: 100%;
+  height: 1150px;
+  top: 0;
+  background-color: rgb(0, 0, 0, 0.8);
+  z-index: 1;
+}
+/*history*/
+#history_conteiner {
+  position: relative;
+  background-color: red;
+  margin-top: -800px;
+}
+#history_area {
+  position: absolute;
+  width: 0px;
+  height: 860px;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  right: 0px;
+  transition: 0.5s;
+
+  visibility: hidden;
+}
+#history_control {
+  display: none;
+}
+#history_control:checked ~ #history_area {
+  width: 25%;
+  visibility: visible;
+}
+.history_close_btn {
+  width: 10px;
+  height: 10px;
+  margin-top: 1px;
+  margin-left: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.tbl_history {
+  width: 98%;
+  margin-left: 1%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  box-shadow: 5px 5px 30px rgb(0, 0, 0, 0.5);
+}
+#date_area {
+  position: relative;
+  width: 40%;
+  height: 25px;
+  background-color: #eeeeee;
+}
+.date_var {
+  position: absolute;
+  top: 20%;
+  font-size: 70%;
+}
+.vLine {
+  position: relative;
+  height: 150px;
+  border-left: 3px solid #eeeeee;
+  margin-left: 15%;
+  margin-bottom: -1%;
+}
+.history_point {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 50px;
+  left: -15px;
+}
+.history_log {
+  position: absolute;
+  width: 70%;
+  height: 80px;
+  margin-left: 20%;
+  margin-top: -30%;
+  padding: 2%;
+  overflow-y: auto;
+  border-radius: 5px;
+  box-shadow: 5px 5px 30px rgb(76, 170, 243, 0.2);
+  background-color: #ffffff;
+  font-size: 70%;
+  text-align: left;
+}
+/*END history*/
+
+  </style>
+</head>
+
+<body>
+	
+  <!--Checkbox Controls-->
+  <input type="checkbox" id="control_expand">
+  <input type="checkbox" id="history_control">
+  <input type="checkbox" id="profile_doc_arrow_control">
+  <input type="checkbox" id="business_doc_arrow_control">
+  
+  <input type="checkbox" id="name_control_edit_singleline">
+  <input type="checkbox" id="name_Showcontrol_edit_singleline">
+  <input type="checkbox" id="street_control_edit_singleline">
+  <input type="checkbox" id="street_Showcontrol_edit_singleline">
+  <input type="checkbox" id="city_control_edit_singleline">
+  <input type="checkbox" id="city_Showcontrol_edit_singleline">
+  <input type="checkbox" id="state_control_edit_singleline">
+  <input type="checkbox" id="state_Showcontrol_edit_singleline">
+  <input type="checkbox" id="code_control_edit_singleline">
+  <input type="checkbox" id="code_Showcontrol_edit_singleline">
+  <input type="checkbox" id="mobile_control_edit_singleline">
+  <input type="checkbox" id="mobile_Showcontrol_edit_singleline">
+  <input type="checkbox" id="phone_control_edit_singleline">
+  <input type="checkbox" id="phone_Showcontrol_edit_singleline">
+  <input type="checkbox" id="email_control_edit_singleline">
+  <input type="checkbox" id="email_Showcontrol_edit_singleline">
+  <input type="checkbox" id="company_name_control_edit_singleline">
+  <input type="checkbox" id="company_name_Showcontrol_edit_singleline">
+  <input type="checkbox" id="company_street_control_edit_singleline">
+  <input type="checkbox" id="company_street_Showcontrol_edit_singleline">
+  <input type="checkbox" id="company_city_control_edit_singleline">
+  <input type="checkbox" id="company_city_Showcontrol_edit_singleline">
+  <input type="checkbox" id="company_state_control_edit_singleline">
+  <input type="checkbox" id="company_state_Showcontrol_edit_singleline">
+  <input type="checkbox" id="company_code_control_edit_singleline">
+  <input type="checkbox" id="company_code_Showcontrol_edit_singleline">
+  <input type="checkbox" id="company_primary_phone_control_edit_singleline">
+  <input type="checkbox" id="company_primary_phone_Showcontrol_edit_singleline">
+  <input type="checkbox" id="company_secundary_phone_control_edit_singleline">
+  <input type="checkbox" id="company_secundary_phone_Showcontrol_edit_singleline">
+  <input type="checkbox" id="company_email_control_edit_singleline">
+  <input type="checkbox" id="company_email_Showcontrol_edit_singleline">
+  <!--END Checkbox Controls-->
+  <!-- Guide Area
+  <div id="guide">
+  </div>
+-->
+  <!--Top Bar-->
+  <div id="top_bar">
+    <div id="top_profile">
+      <div class="profile_image">
+        <svg width="55px" height="55px" aria-hidden="true" focusable="false" data-prefix="far" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="#707070" d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"></path>
+        </svg>
+      </div>
+      <div class="profile_info">
+        <br><span class="st1_text"> {!Your Name}</span><br>
+        
+      </div>
+    </div>
+    <div class="top_btn_area">
+      <div class="top_btn_grid1">
+
+      </div>
+      <div class="top_btn_grid2">
+      </div>
+    </div>
+  </div>
+  <!--END Top Bar-->
+  
+  <!--Main-->
+  <div id="main">
+    
+    <!--Profile Clasic Area-->
+    <div class="profile_clasic_area">
+      <!--Title Clasic Area -->
+      <div class="profile_a_title">
+        <div class="profile_a_title_var">My Profile</div>
+        <a href="#">
+          <div class="edit_clasic_btn">
+            <div class="edit_clasic_btn_text">EDIT</div>
+          </div>
+        </a>
+      </div>
+
+      <!--End Title Clasic Area -->
+      <!-- Profile First Grid-->
+      <div class="profile_first_grid">
+        <!--Name Field-->
+        <div class="name_field">
+          <div class="name_label_field">
+            Name
+          </div>
+          <label for="name_Showcontrol_edit_singleline">
+            <div id="name_area_field">
+              <label for="name_control_edit_singleline">
+                <div class="name_edit_pen">
+                  <svg height="100%" viewBox="0 0 325 325.37515" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#707070" d="m114.6875 284.675781-73.800781-73.800781 178.5-178.5 73.800781 73.800781zm-80.699219-60.800781 67.699219 67.699219-101.5 33.800781zm281.898438-140.300781-12.800781 12.800781-73.898438-73.898438 12.800781-12.800781c12.894531-12.902343 33.804688-12.902343 46.699219 0l27.199219 27.199219c12.800781 12.9375 12.800781 33.765625 0 46.699219zm0 0" /></svg>
+                </div>
+              </label>
+              <span class="name_text_field_area">
+                {!Complete Name}
+              </span>
+              <form action="#" id="name_singleForm">
+                <input type="text" id="name_inputText" name="" autofocus value="{!Complete Name}">
+                <div class="name_submit_and_cancel_btn">
+                  <input type="image" id="name_submit_control">
+                  <label for="name_submit_control">
+                    <div class="name_submit_btn">
+                      <svg height='100%' viewBox='0 0 512 512' width='100%' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0' fill='#1ACEB8' />
+                        <path d='m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0' fill='#fafafa' /></svg>
+                    </div>
+                  </label>
+                  <label for="name_control_edit_singleline">
+                    <div class="name_cancel_btn">
+                      <?xml version="1.0" encoding="iso-8859-1"?>
+                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <circle style="fill:#D75A4A;" cx="25" cy="25" r="25" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	" />
+                      </svg>
+
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </label>
+        </div>
+        <!--End Name Field-->
+        <!--Street Field-->
+        <div class="street_field">
+          <div class="street_label_field">
+            Street
+          </div>
+          <label for="street_Showcontrol_edit_singleline">
+            <div id="street_area_field">
+              <label for="street_control_edit_singleline">
+                <div class="street_edit_pen">
+                  <svg height="100%" viewBox="0 0 325 325.37515" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#707070" d="m114.6875 284.675781-73.800781-73.800781 178.5-178.5 73.800781 73.800781zm-80.699219-60.800781 67.699219 67.699219-101.5 33.800781zm281.898438-140.300781-12.800781 12.800781-73.898438-73.898438 12.800781-12.800781c12.894531-12.902343 33.804688-12.902343 46.699219 0l27.199219 27.199219c12.800781 12.9375 12.800781 33.765625 0 46.699219zm0 0" /></svg>
+                </div>
+              </label>
+              <span class="street_text_field_area">
+                {!Street}
+              </span>
+              <form action="#" id="street_singleForm">
+                <input type="text" id="street_inputText" name="" autofocus value="{!Street}">
+                <div class="street_submit_and_cancel_btn">
+                  <input type="image" id="street_submit_control">
+                  <label for="street_submit_control">
+                    <div class="street_submit_btn">
+                      <svg height='100%' viewBox='0 0 512 512' width='100%' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0' fill='#1ACEB8' />
+                        <path d='m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0' fill='#fafafa' /></svg>
+                    </div>
+                  </label>
+                  <label for="street_control_edit_singleline">
+                    <div class="street_cancel_btn">
+                      <?xml version="1.0" encoding="iso-8859-1"?>
+                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <circle style="fill:#D75A4A;" cx="25" cy="25" r="25" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	" />
+                      </svg>
+
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </label>
+        </div>
+        <!--End Street Field-->
+        <!--City Field-->
+        <div class="city_field">
+          <div class="city_label_field">
+            City
+          </div>
+          <label for="city_Showcontrol_edit_singleline">
+            <div id="city_area_field">
+              <label for="city_control_edit_singleline">
+                <div class="city_edit_pen">
+                  <svg height="100%" viewBox="0 0 325 325.37515" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#707070" d="m114.6875 284.675781-73.800781-73.800781 178.5-178.5 73.800781 73.800781zm-80.699219-60.800781 67.699219 67.699219-101.5 33.800781zm281.898438-140.300781-12.800781 12.800781-73.898438-73.898438 12.800781-12.800781c12.894531-12.902343 33.804688-12.902343 46.699219 0l27.199219 27.199219c12.800781 12.9375 12.800781 33.765625 0 46.699219zm0 0" /></svg>
+                </div>
+              </label>
+              <span class="city_text_field_area">
+                {!City}
+              </span>
+              <form action="#" id="city_singleForm">
+                <input type="text" id="city_inputText" name="" autofocus value="{!City}">
+                <div class="city_submit_and_cancel_btn">
+                  <input type="image" id="city_submit_control">
+                  <label for="city_submit_control">
+                    <div class="city_submit_btn">
+                      <svg height='100%' viewBox='0 0 512 512' width='100%' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0' fill='#1ACEB8' />
+                        <path d='m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0' fill='#fafafa' /></svg>
+                    </div>
+                  </label>
+                  <label for="city_control_edit_singleline">
+                    <div class="city_cancel_btn">
+                      <?xml version="1.0" encoding="iso-8859-1"?>
+                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <circle style="fill:#D75A4A;" cx="25" cy="25" r="25" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	" />
+                      </svg>
+
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+
+          </label>
+        </div>
+        <!--End City Field-->
+        <!--State Field-->
+        <div class="state_field">
+          <div class="state_label_field">
+            State
+          </div>
+          <label for="state_Showcontrol_edit_singleline">
+            <div id="state_area_field">
+              <label for="state_control_edit_singleline">
+                <div class="state_edit_pen">
+                  <svg height="100%" viewBox="0 0 325 325.37515" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#707070" d="m114.6875 284.675781-73.800781-73.800781 178.5-178.5 73.800781 73.800781zm-80.699219-60.800781 67.699219 67.699219-101.5 33.800781zm281.898438-140.300781-12.800781 12.800781-73.898438-73.898438 12.800781-12.800781c12.894531-12.902343 33.804688-12.902343 46.699219 0l27.199219 27.199219c12.800781 12.9375 12.800781 33.765625 0 46.699219zm0 0" /></svg>
+                </div>
+              </label>
+              <span class="state_text_field_area">
+                {!State}
+              </span>
+              <form action="#" id="state_singleForm">
+                <input class="state_box" name="" list="state_list">
+                <datalist id="state_list">
+                  <option value="State 1"></option>
+                  <option value="State 2"></option>
+                  <option value="State 3"></option>
+                </datalist>
+                </input>
+                <div class="state_submit_and_cancel_btn">
+                  <input type="image" id="state_submit_control">
+                  <label for="state_submit_control">
+                    <div class="state_submit_btn">
+                      <svg height='100%' viewBox='0 0 512 512' width='100%' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0' fill='#1ACEB8' />
+                        <path d='m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0' fill='#fafafa' /></svg>
+                    </div>
+                  </label>
+                  <label for="state_control_edit_singleline">
+                    <div class="state_cancel_btn">
+                      <?xml version="1.0" encoding="iso-8859-1"?>
+                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <circle style="fill:#D75A4A;" cx="25" cy="25" r="25" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	" />
+                      </svg>
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </label>
+        </div>
+        <!--End State Field-->
+        <!--Code Field-->
+        <div class="code_field">
+          <div class="code_label_field">
+            Code
+          </div>
+          <label for="code_Showcontrol_edit_singleline">
+            <div id="code_area_field">
+              <label for="code_control_edit_singleline">
+                <div class="code_edit_pen">
+                  <svg height="100%" viewBox="0 0 325 325.37515" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#707070" d="m114.6875 284.675781-73.800781-73.800781 178.5-178.5 73.800781 73.800781zm-80.699219-60.800781 67.699219 67.699219-101.5 33.800781zm281.898438-140.300781-12.800781 12.800781-73.898438-73.898438 12.800781-12.800781c12.894531-12.902343 33.804688-12.902343 46.699219 0l27.199219 27.199219c12.800781 12.9375 12.800781 33.765625 0 46.699219zm0 0" /></svg>
+                </div>
+              </label>
+              <span class="code_text_field_area">
+                {!Code}
+              </span>
+              <form action="#" id="code_singleForm">
+                <input type="text" id="code_inputText" name="" autofocus value="{!Code}">
+                <div class="code_submit_and_cancel_btn">
+                  <input type="image" id="code_submit_control">
+                  <label for="code_submit_control">
+                    <div class="code_submit_btn">
+                      <svg height='100%' viewBox='0 0 512 512' width='100%' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0' fill='#1ACEB8' />
+                        <path d='m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0' fill='#fafafa' /></svg>
+                    </div>
+                  </label>
+                  <label for="code_control_edit_singleline">
+                    <div class="code_cancel_btn">
+                      <?xml version="1.0" encoding="iso-8859-1"?>
+                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <circle style="fill:#D75A4A;" cx="25" cy="25" r="25" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	" />
+                      </svg>
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </label>
+        </div>
+        <!--End Code Field-->
+      </div>
+      <!--END Profile First Grid-->
+      <!--Profile Second Grid-->
+      <div class="profile_second_grid">
+        <!--Mobile field-->
+        <div class="mobile_field">
+          <div class="mobile_label_field">
+            Mobile
+          </div>
+          <label for="mobile_Showcontrol_edit_singleline">
+            <div id="mobile_area_field">
+              <label for="mobile_control_edit_singleline">
+                <div class="mobile_edit_pen">
+                  <svg height="100%" viewBox="0 0 325 325.37515" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#707070" d="m114.6875 284.675781-73.800781-73.800781 178.5-178.5 73.800781 73.800781zm-80.699219-60.800781 67.699219 67.699219-101.5 33.800781zm281.898438-140.300781-12.800781 12.800781-73.898438-73.898438 12.800781-12.800781c12.894531-12.902343 33.804688-12.902343 46.699219 0l27.199219 27.199219c12.800781 12.9375 12.800781 33.765625 0 46.699219zm0 0" /></svg>
+                </div>
+              </label>
+              <span class="mobile_text_field_area">
+                {!Mobile}
+              </span>
+              <form action="#" id="mobile_singleForm">
+                <input type="text" id="mobile_inputText" name="" autofocus value="{!Mobile}">
+                <div class="mobile_submit_and_cancel_btn">
+                  <input type="image" id="mobile_submit_control">
+                  <label for="mobile_submit_control">
+                    <div class="mobile_submit_btn">
+                      <svg height='100%' viewBox='0 0 512 512' width='100%' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0' fill='#1ACEB8' />
+                        <path d='m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0' fill='#fafafa' /></svg>
+                    </div>
+                  </label>
+                  <label for="mobile_control_edit_singleline">
+                    <div class="mobile_cancel_btn">
+                      <?xml version="1.0" encoding="iso-8859-1"?>
+                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <circle style="fill:#D75A4A;" cx="25" cy="25" r="25" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	" />
+                      </svg>
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </label>
+        </div>
+        <!--END Mobile field-->
+        <!--Phone Field-->
+        <div class="phone_field">
+          <div class="phone_label_field">
+            Phone
+          </div>
+          <label for="phone_Showcontrol_edit_singleline">
+            <div id="phone_area_field">
+              <label for="phone_control_edit_singleline">
+                <div class="phone_edit_pen">
+                  <svg height="100%" viewBox="0 0 325 325.37515" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#707070" d="m114.6875 284.675781-73.800781-73.800781 178.5-178.5 73.800781 73.800781zm-80.699219-60.800781 67.699219 67.699219-101.5 33.800781zm281.898438-140.300781-12.800781 12.800781-73.898438-73.898438 12.800781-12.800781c12.894531-12.902343 33.804688-12.902343 46.699219 0l27.199219 27.199219c12.800781 12.9375 12.800781 33.765625 0 46.699219zm0 0" /></svg>
+                </div>
+              </label>
+              <span class="phone_text_field_area">
+                {!Phone}
+              </span>
+              <form action="#" id="phone_singleForm">
+                <input type="text" id="phone_inputText" name="" autofocus value="{!Phone}">
+                <div class="phone_submit_and_cancel_btn">
+                  <input type="image" id="phone_submit_control">
+                  <label for="phone_submit_control">
+                    <div class="phone_submit_btn">
+                      <svg height='100%' viewBox='0 0 512 512' width='100%' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0' fill='#1ACEB8' />
+                        <path d='m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0' fill='#fafafa' /></svg>
+                    </div>
+                  </label>
+                  <label for="phone_control_edit_singleline">
+                    <div class="phone_cancel_btn">
+                      <?xml version="1.0" encoding="iso-8859-1"?>
+                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <circle style="fill:#D75A4A;" cx="25" cy="25" r="25" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	" />
+                      </svg>
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </label>
+        </div>
+        <!--END Phone Field-->
+        <!--Email Field-->
+        <div class="email_field">
+          <div class="email_label_field">
+            Email
+          </div>
+          <label for="email_Showcontrol_edit_singleline">
+            <div id="email_area_field">
+              <label for="email_control_edit_singleline">
+                <div class="email_edit_pen">
+                  <svg height="100%" viewBox="0 0 325 325.37515" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#707070" d="m114.6875 284.675781-73.800781-73.800781 178.5-178.5 73.800781 73.800781zm-80.699219-60.800781 67.699219 67.699219-101.5 33.800781zm281.898438-140.300781-12.800781 12.800781-73.898438-73.898438 12.800781-12.800781c12.894531-12.902343 33.804688-12.902343 46.699219 0l27.199219 27.199219c12.800781 12.9375 12.800781 33.765625 0 46.699219zm0 0" /></svg>
+                </div>
+              </label>
+              <span class="email_text_field_area">
+                {!Email}
+              </span>
+              <form action="#" id="email_singleForm">
+                <input type="text" id="email_inputText" name="" autofocus value="{!Email}">
+                <div class="email_submit_and_cancel_btn">
+                  <input type="image" id="email_submit_control">
+                  <label for="email_submit_control">
+                    <div class="email_submit_btn">
+                      <svg height='100%' viewBox='0 0 512 512' width='100%' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0' fill='#1ACEB8' />
+                        <path d='m385.75 201.75-138.667969 138.664062c-4.160156 4.160157-9.621093 6.253907-15.082031 6.253907s-10.921875-2.09375-15.082031-6.253907l-69.332031-69.332031c-8.34375-8.339843-8.34375-21.824219 0-30.164062 8.339843-8.34375 21.820312-8.34375 30.164062 0l54.25 54.25 123.585938-123.582031c8.339843-8.34375 21.820312-8.34375 30.164062 0 8.339844 8.339843 8.339844 21.820312 0 30.164062zm0 0' fill='#fafafa' /></svg>
+                    </div>
+                  </label>
+                  <label for="email_control_edit_singleline">
+                    <div class="email_cancel_btn">
+                      <?xml version="1.0" encoding="iso-8859-1"?>
+                      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <circle style="fill:#D75A4A;" cx="25" cy="25" r="25" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	" />
+                        <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	" />
+                      </svg>
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </label>
+        </div>
+        <!--END Email Field-->
+      </div>
+      <!--END Profile Second Grid-->
+    </div>
+    <!--END Profile Clasic Area-->
+    <!--Company Clasic Area-->
+   
+        <!--END Secundary Phone Field-->
+        <!--Company Email Field-->
+        
+    <!--END Company Clasic Area-->
+    <!--Logo Area-->
+    
+    <!--END Logo Area-->
+  </div>
+  <!--END Main-->
+
+</body>
+
+</html>
