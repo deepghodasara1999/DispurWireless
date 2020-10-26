@@ -38,9 +38,9 @@
     <img class="mb-4" src="{{ url_for('static', filename='main.png') }}" alt="" width="200" height="100">
     <h1 class="h3 mb-3 font-weight-normal">Admin Login</h1>
     <label for="inputId" class="sr-only">Registration Id</label>
-    <input type="email" id="inputId" class="form-control" placeholder="Registration Id" required autofocus>
+    <input type="email" id="inputId" name="id" class="form-control" placeholder="Registration Id" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="password" id="inputPassword" name="pwd" class="form-control" placeholder="Password" required>
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
