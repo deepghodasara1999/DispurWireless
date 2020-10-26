@@ -16,13 +16,15 @@ class Registration(db.Model):
 	email = db.Column(db.String, nullable=False)
 	pwd = db.Column(db.String, nullable=False)
 
-	def __init__(self,c_id,fname,lname,contact,email,pwd):
-		self.c_id = c_id
+	def __init__(self,fname,lname,contact,email,pwd):
 		self.fname = fname
 		self.lname = lname
 		self.contact = contact
 		self.email = email
 		self.pwd = pwd
+
+class CurrentUser:
+	usrObj =None
 
 @app.route("/")
 def home():
@@ -34,16 +36,18 @@ def login():
 		username = request.form.get('email')
 		password = request.form.get('pwd')
 
-
-
-		return redirect("/profile")
+		u = Registration.query.filter_by(c_id=username).first()
+		if(str(u.c_id) == str(username) and u.pwd == password):
+			CurrentUser.usrObj = u
+			return redirect("/profile")
+		else:
+			return render_template('login.html')
 	else:
 		return render_template('login.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
 	if(request.method == "POST"):
-
 		fname = request.form.get('fname')
 		lname = request.form.get('lname')
 		contact = request.form.get('contact')
@@ -58,8 +62,13 @@ def register():
 	else:
 		return render_template('register.html')
 
-@app.route("/profile")
+@app.route("/profile", methods=['GET', 'POST'])
 def profile():
-	 return render_template('profile.html')
+	if(request.method == "POST"):
+		if(request.form["phn"]):
+			CurrentUser.usrObj.contact = request.form.get('phn')
+		elif (request.form["street"]):
+			print("I am here")
+	return render_template('profile.html',user=CurrentUser.usrObj)
 
 app.run(debug=True)
