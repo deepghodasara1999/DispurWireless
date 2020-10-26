@@ -146,4 +146,12 @@ def profile():
 			db.session.commit()
 	return render_template('profile.html',user=CurrentUser.usrObj)
 
+@app.route("/plans")
+def plans():
+	return render_template('plans.html')
+
+@app.route("/status")
+def status():
+	return render_template('status.html')
+
 app.run(debug=True)
