@@ -31,7 +31,7 @@ def home():
 @app.route("/login",  methods=['GET', 'POST'])
 def login():
 	if(request.method == "POST"):
-		return render_template('profile.html')
+		return profile()
 	else:
 		return render_template('login.html')
 
@@ -53,5 +53,9 @@ def register():
 
 	else:
 		return render_template('register.html')
+
+@app.route("/profile")
+def profile():
+	return render_template('profile.html')
 
 app.run(debug=True)
