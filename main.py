@@ -40,6 +40,22 @@ class Registration(db.Model):
 		self.email = email
 		self.pwd = pwd
 
+class Plan(db.Model):
+	name = db.Column(db.String, unique=True, primary_key=True)
+	price = db.Column(db.Integer, nullable=False)
+	account = db.Column(db.Integer, nullable=False)
+	speed = db.Column(db.Integer, nullable=False)
+	validity = db.Column(db.Integer, nullable=False)
+	data = db.Column(db.String, nullable=True)
+
+	def __init__(self,name,price,account,speed,validity,data):
+		self.name = name
+		self.price = price
+		self.speed = speed
+		self.account = account
+		self.validity = validity
+		self.data = data
+
 class CurrentUser:
 	usrObj =None
 
@@ -148,7 +164,8 @@ def profile():
 
 @app.route("/plans")
 def plans():
-	return render_template('plans.html')
+	users = Plan.query.all()
+	return render_template('plans.html',users=users)
 
 @app.route("/status")
 def status():

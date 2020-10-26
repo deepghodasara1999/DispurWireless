@@ -191,7 +191,28 @@ border: none;
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:Condensed" />
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
 
-<div id="plan">
+{%for user in users%}
+  <div id="plan">
+  <div class="title">
+    <h1>{{user.price}} <span>/month</span></h1>
+    <p>{{user.name}}</p>
+
+  </div>
+<div class="containDetails">
+<ul class="details">
+  <li class="first">{{user.account}}<span>Accounts</span></li>
+  <li>{{user.speed}}mb<span>Speed</span></li>
+  <li>{{user.validity}}<span>Validity</span></li>
+  <li>{{user.data}}GB<span>Data</span></li>
+</ul>
+  </div>
+  <div class="end">
+    <div class="select">
+    <a href="#" class="button button-flat-royal button-pill">Select Plan</a>
+    </div></div>
+</div>
+{%endfor%} 
+<!-- <div id="plan">
   <div class="title">
     <h1>₹399 <span>/month</span></h1>
     <p>Kids</p>
@@ -249,7 +270,7 @@ border: none;
     <div class="select">
     <a href="#" class="button button-flat-royal button-pill">Select Plan</a>
     </div></div>
-</div>
+</div> -->
 </body>
 </html>
 {% endblock %}
