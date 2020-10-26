@@ -11,7 +11,6 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:@localhost/case_study'
 db = SQLAlchemy(app)
 
-app = Flask(__name__)
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT='465',
@@ -29,10 +28,10 @@ class Registration(db.Model):
 	contact = db.Column(db.String, nullable=False)
 	email = db.Column(db.String, nullable=False)
 	pwd = db.Column(db.String, nullable=False)
-	street = db.Column(db.String, nullable=False)
-	city = db.Column(db.String, nullable=False)
-	state = db.Column(db.String, nullable=False)
-	pincode = db.Column(db.String, nullable=False)
+	street = db.Column(db.String, nullable=True)
+	city = db.Column(db.String, nullable=True)
+	state = db.Column(db.String, nullable=True)
+	pincode = db.Column(db.String, nullable=True)
 
 	def __init__(self,fname,lname,contact,email,pwd):
 		self.fname = fname
@@ -106,9 +105,13 @@ def register():
 
 		else:
 			if request.form.get('otp') == str(Verify.CustomerOTP):
+				print("I am here")
 				db.session.add(Verify.customerObj)
 				db.session.commit()
 				##--> code for send coustomer Id
+				mail.send_message('Registration Successful',
+								  recipients=[Verify.customerObj.email, ],
+								  body="Your Customer ID is : " + str(Verify.customerObj.c_id))
 				return render_template('confirm.html')
 			else:
 				##--> code here for wrong OTP
