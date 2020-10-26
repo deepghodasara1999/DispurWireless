@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+
+
+ {% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    *{
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Montserrat,sans-serif;
+  background-image: linear-gradient(0deg, "white", #fad730);
+  height: 100vh;
+  margin: 50px;
+  
+  >h1, >p{
+    text-align:center;
+  }
+  
+  >h1{
+    margin: 40px;
+    color: #000000;
+  }
+  
+  >p{
+    font-size:20px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+}
+
+.custom-table{
+  box-shadow: 5px 5px 5px -5px rgba(0,0,0, 0.5); 
+  width: 100%;
+  overflow: auto;
+  
+  table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td{
+    text-align: center;
+    padding: 15px;
+    width: calc(100% / 5);
+  }
+
+  thead{
+    tr{
+      th, td{
+        color: #ffffff;
+        font-weight: bold;
+      }
+      
+      &:nth-child(1){
+        background-color: #E91E63;
+        th{
+          font-size: 1.2rem;
+          text-transform: uppercase;
+        }  
+      }
+      
+      &:nth-child(2){
+        background-color: #c13a68;
+        td{
+          font-size: 2.2rem;
+          padding: 20px 15px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+      }
+      
+      th:nth-child(1){
+        color: #ffffff;
+        background-color: #000000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      th:nth-child(2), td:nth-child(1){
+        background-color: rgba(0,0,0,0.1)
+      }
+      th:nth-child(3), td:nth-child(2){
+        background-color: rgba(0,0,0,0.2)
+      }
+      th:nth-child(4), td:nth-child(3){
+        background-color: rgba(0,0,0,0.3)
+      }
+      th:nth-child(5), td:nth-child(4){
+        background-color: rgba(0,0,0,0.4)
+      }
+    }
+  }
+  
+  tbody{
+    tr{
+      &:nth-child(odd){
+        background-color: #e0e0e0;
+      }
+      
+      &:nth-child(even){
+        background-color: #eeeeee;
+      }
+      
+      &:not(:last-child) td{
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+      }
+      
+      td{
+        &:nth-child(odd){
+          background-color: rgba(0,0,0,0.05)
+        }
+        
+        &:first-child{
+          color: #ffffff;
+          background-color: #000000;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+
+  </style>
+  <title></title>
+</head>
+<body>
+
+<h1 align="center">Pricing Table</h1>
+
+<div class="custom-table">
+  <table align="center">
+    <thead>
+      <tr>
+        <th rowspan="2">Data Plans</th>
+        <th>Bronze</th>
+        <th>Silver</th>
+        <th>Gold</th>
+        <th>Platinum</th>
+      </tr>
+      <tr>
+        <td>₹500</td>
+        <td>₹100</td>
+        <td>₹1500</td>
+        <td>₹2500</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Talktime</td>
+        <td>1000 Mins.</td>
+        <td>1100 Mins.</td>
+        <td>1200 Mins.</td>
+        <td>2000 Mins.</td>
+      </tr>
+      <tr>
+        <td>Data</td>
+        <td>10 GB</td>
+        <td>15 GB</td>
+        <td>20 GB</td>
+        <td>40 GB</td>
+      </tr>
+      <tr>
+        <td>Data Rollover</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Upto 100 GB</td>
+        <td>Upto 150 GB</td>
+      </tr>
+      <tr>
+        <td>Validity</td>
+        <td>1 Month</td>
+        <td>1 Month</td>
+        <td>1 Month</td>
+        <td>1.5 Month</td>
+      </tr>
+      <tr>
+        <td>Roaming</td>
+        <td>Free</td>
+        <td>Free</td>
+        <td>Free</td>
+        <td>Free</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+
+</html>
+{% endblock %}
