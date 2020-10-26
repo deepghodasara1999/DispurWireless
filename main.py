@@ -37,6 +37,21 @@ class Customer(db.Model):
 		self.password = password
 		self.address = address
 
+class Admin(db.Model):
+	__tablename__='admin'
+	id = db.Column(db.String, primary_key=True)
+	fname = db.Column(db.String, nullable=False)
+	lname = db.Column(db.String, nullable=False)
+	email = db.Column(db.String, nullable=False)
+	password = db.Column(db.String, nullable=False)
+
+	def __init__(self,id,fname,lname,email,password):
+		self.id = id
+		self.fname = fname
+		self.lname = lname
+		self.email = email
+		self.password = password
+
 class Verify():
 	customerObj=None
 	CustomerOTP=None
@@ -88,5 +103,19 @@ def register():
 
 	else:
 		return render_template('register.html')
+
+@app.route("/admin", methods=['GET', 'POST'])
+def admin():
+	if (request.method == "POST"):
+		return redirect("/admin-panel")
+	else:
+		return render_template("admin.html")
+
+@app.route("/admin-panel", methods=['GET', 'POST'])
+def admin():
+	if (request.method == "POST"):
+		pass
+	else:
+		return render_template("admin_panel.html")
 
 app.run(debug=True)

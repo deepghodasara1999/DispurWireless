@@ -3,7 +3,7 @@ body {
   height: 100%;
 }
 
-.mybody {
+body {
   height: 100%;
   display: -ms-flexbox;
   display: -webkit-box;
