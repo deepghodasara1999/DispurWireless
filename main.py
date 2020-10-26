@@ -30,7 +30,8 @@ class Customer(db.Model):
 	password = db.Column(db.String, nullable=False)
 	address = db.Column(db.String, nullable=False)
 
-	def __init__(self,first_name,last_name,mobile_no,email,password,address):
+	def __init__(self,customer_id,first_name,last_name,mobile_no,email,password,address):
+		self.customer_id = customer_id
 		self.first_name = first_name
 		self.last_name = last_name
 		self.mobile_no = mobile_no
@@ -58,8 +59,9 @@ class Verify():
 	CustomerOTP=None
 
 class CurrentAdmin:
-	usrObj =None
-	total=None
+	adminObj = None
+	total= None
+	userObjs = None
 
 
 @app.route("/")
@@ -127,8 +129,10 @@ def admin():
 		u = Admin.query.filter_by(id=id).first()
 		if(str(u.id) == str(id) and u.password == password):
 			print("2")
-			CurrentAdmin.usrObj = u
+			CurrentAdmin.adminObj = u
+			users = Customer.query.all()
 			rows = Customer.query.filter().count()
+			CurrentAdmin.userObjs = users
 			CurrentAdmin.total = rows
 			return redirect("/admin_panel")
 		else:
@@ -141,8 +145,11 @@ def admin():
 @app.route("/admin_panel", methods=['GET', 'POST'])
 def admin_panel():
 	if (request.method == "POST"):
-		pass
+		if request.form["form_flag"]=="search":
+			print("I am here")
+			given_id = int(request.form.get('given_id'))
+			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 1, id=given_id, list = CurrentAdmin.userObjs)
 	else:
-		return render_template("admin_panel.html", no = CurrentAdmin.total)
+		return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 0)
 
 app.run(debug=True)
