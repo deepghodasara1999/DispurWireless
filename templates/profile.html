@@ -2284,7 +2284,8 @@
                 </span>
                 <form action="/profile" method="post" id="mobile_singleForm">
                   <input type="hidden" name="flag" value="contact">
-                  <input type="text" id="mobile_inputText" name="phn" autofocus value={{user.contact}}>
+                  <input type="hidden" name="c_id" value={{user.c_id}}>
+                  <input type="text" name="phn" id="mobile_inputText" autofocus value={{user.contact}}>
                   <div class="mobile_submit_and_cancel_btn">
                     <input type="image" id="mobile_submit_control">
                     <label for="mobile_submit_control">
@@ -2380,11 +2381,12 @@
                   </div>
                 </label>
                 <span class="street_text_field_area">
-                  {!Street}
+                  {{user.street}}
                 </span>
                 <form action="/profile" method="post" id="street_singleForm">
                   <input type="hidden" name="flag" value="street">
-                  <input type="text" name="street" id="street_inputText" name="" autofocus value="{!Street}">
+                  <input type="hidden" name="c_id" value={{user.c_id}}>
+                  <input type="text" name="street" id="street_inputText" name="" autofocus value={{user.street}}>
                   <div class="street_submit_and_cancel_btn">
                     <input type="image" id="street_submit_control">
                     <label for="street_submit_control">
@@ -2428,10 +2430,12 @@
                   </div>
                 </label>
                 <span class="city_text_field_area">
-                  {!City}
+                  {{user.city}}
                 </span>
-                <form action="#" id="city_singleForm">
-                  <input type="text" id="city_inputText" name="" autofocus value="{!City}">
+                <form action="/profile" method="post" id="city_singleForm">
+                  <input type="hidden" name="flag" value="city">
+                  <input type="hidden" name="c_id" value={{user.c_id}}>
+                  <input type="text" id="city_inputText" name="city" autofocus value={{user.city}}>
                   <div class="city_submit_and_cancel_btn">
                     <input type="image" id="city_submit_control">
                     <label for="city_submit_control">
@@ -2476,10 +2480,12 @@
                   </div>
                 </label>
                 <span class="state_text_field_area">
-                  {!State}
+                  {{user.state}}
                 </span>
-                <form action="#" id="state_singleForm">
-                  <input class="state_box" name="" list="state_list">
+                <form action="/profile" method="post" id="state_singleForm">
+                  <input type="hidden" name="flag" value="state">
+                  <input type="hidden" name="c_id" value={{user.c_id}}>
+                  <input class="state_box" name="state" list="state_list" autofocus value={{user.state}}>
                   <datalist id="state_list">
                     <option value="State 1"></option>
                     <option value="State 2"></option>
@@ -2529,10 +2535,12 @@
                   </div>
                 </label>
                 <span class="code_text_field_area">
-                  {!Code}
+                  {{user.pincode}}
                 </span>
-                <form action="#" id="code_singleForm">
-                  <input type="text" id="code_inputText" name="" autofocus value="{!Code}">
+                <form action="/profile" method="post" id="code_singleForm">
+                  <input type="hidden" name="flag" value="pincode">
+                  <input type="hidden" name="c_id" value={{user.c_id}}>
+                  <input type="text" id="code_inputText" name="pincode" autofocus value={{user.pincode}}>
                   <div class="code_submit_and_cancel_btn">
                     <input type="image" id="code_submit_control">
                     <label for="code_submit_control">

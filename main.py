@@ -15,6 +15,10 @@ class Registration(db.Model):
 	contact = db.Column(db.String, nullable=False)
 	email = db.Column(db.String, nullable=False)
 	pwd = db.Column(db.String, nullable=False)
+	street = db.Column(db.String, nullable=False)
+	city = db.Column(db.String, nullable=False)
+	state = db.Column(db.String, nullable=False)
+	pincode = db.Column(db.String, nullable=False)
 
 	def __init__(self,fname,lname,contact,email,pwd):
 		self.fname = fname
@@ -65,10 +69,27 @@ def register():
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
 	if(request.method == "POST"):
+		admin = Registration.query.filter_by(c_id=request.form['c_id']).first()
 		if(request.form["flag"]=="contact"):
 			CurrentUser.usrObj.contact = request.form.get('phn')
+			admin.contact = request.form.get('phn')
+			db.session.commit()
 		elif (request.form["flag"]=="street"):
-			print("I am here")
+			CurrentUser.usrObj.street = request.form.get('street')
+			admin.street = request.form.get('street')
+			db.session.commit()
+		elif (request.form["flag"]=="city"):
+			CurrentUser.usrObj.city = request.form.get('city')
+			admin.city = request.form.get('city')
+			db.session.commit()
+		elif (request.form["flag"]=="state"):
+			CurrentUser.usrObj.state = request.form.get('state')
+			admin.state = request.form.get('state')
+			db.session.commit()
+		elif (request.form["flag"]=="pincode"):
+			CurrentUser.usrObj.pincode = request.form.get('pincode')
+			admin.pincode = request.form.get('pincode')
+			db.session.commit()
 	return render_template('profile.html',user=CurrentUser.usrObj)
 
 app.run(debug=True)
