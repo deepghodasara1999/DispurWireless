@@ -2,6 +2,7 @@ import pymysql
 pymysql.install_as_MySQLdb()
 from flask import Flask, render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
+
 from flask_mail import Mail
 import math
 import random
@@ -56,25 +57,29 @@ class Verify():
 	customerObj=None
 	CustomerOTP=None
 
+class CurrentAdmin:
+	usrObj =None
+	total=None
+
 
 @app.route("/")
 def home():
 	return render_template('index.html')
 
-@app.route("/login")
-def login():
-	if(request.method == "POST"):
-		id = request.form.get('email')
-		password = request.form.get('pwd')
+# @app.route("/login")
+# def login():
+# 	if(request.method == "POST"):
+# 		id = request.form.get('email')
+# 		password = request.form.get('pwd')
 
-		u = Registration.query.filter_by(c_id=username).first()
-		if(str(u.c_id) == str(username) and u.pwd == password):
-			CurrentUser.usrObj = u
-			return redirect("/profile")
-		else:
-			return render_template('login.html')
-	else:
-		return render_template('login.html')
+# 		u = Registration.query.filter_by(c_id=username).first()
+# 		if(str(u.c_id) == str(username) and u.pwd == password):
+# 			CurrentUser.usrObj = u
+# 			return redirect("/profile")
+# 		else:
+# 			return render_template('login.html')
+# 	else:
+# 		return render_template('login.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -115,15 +120,29 @@ def register():
 @app.route("/admin", methods=['GET', 'POST'])
 def admin():
 	if (request.method == "POST"):
-		return redirect("/admin-panel")
-	else:
-		return render_template("admin.html")
+		print("1")
+		id = request.form.get('id')
+		password = request.form.get('pwd')
 
-@app.route("/admin-panel", methods=['GET', 'POST'])
-def admin():
+		u = Admin.query.filter_by(id=id).first()
+		if(str(u.id) == str(id) and u.password == password):
+			print("2")
+			CurrentAdmin.usrObj = u
+			rows = Customer.query.filter().count()
+			CurrentAdmin.total = rows
+			return redirect("/admin_panel")
+		else:
+			print("3")
+			return render_template('admin_login.html')
+	else:
+		print("4")
+		return render_template("admin_login.html")
+
+@app.route("/admin_panel", methods=['GET', 'POST'])
+def admin_panel():
 	if (request.method == "POST"):
 		pass
 	else:
-		return render_template("admin_panel.html")
+		return render_template("admin_panel.html", no = CurrentAdmin.total)
 
 app.run(debug=True)

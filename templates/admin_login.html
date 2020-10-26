@@ -32,13 +32,13 @@
 
 <body class="text-center">
   <!-- <img class="mb-4" src="{{ url_for('static', filename='1.png') }}" alt="" width="200" height="100"> -->
-  <form class="form-signin">
+  <form class="form-signin" action="/admin" method="POST">
 
     <!-- <img class="mb-4" src="{{ url_for('static', filename='main.png') }}" alt="" width="72" height="72"> -->
     <img class="mb-4" src="{{ url_for('static', filename='main.png') }}" alt="" width="200" height="100">
     <h1 class="h3 mb-3 font-weight-normal">Admin Login</h1>
     <label for="inputId" class="sr-only">Registration Id</label>
-    <input type="email" id="inputId" name="id" class="form-control" placeholder="Registration Id" required autofocus>
+    <input type="text" id="inputId" name="id" class="form-control" placeholder="Registration Id" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" name="pwd" class="form-control" placeholder="Password" required>
     <div class="checkbox mb-3">

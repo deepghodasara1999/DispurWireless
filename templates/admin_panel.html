@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+
+
+{% block title %}
+<title>Admin Panel</title>
+{% endblock %}
+
+
+
+
+{% block menu %}
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+</ul>
+{% endblock %}
+
+{% block style %}
+<style>
+    .jumbotron {
+        background-color: #e9ecef;
+        background: radial-gradient(circle, rgba(254, 254, 254, 1) 0%, rgba(6, 68, 108, 0.2049194677871149) 100%);
+    }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+        <p class="lead">Total Registered Customers</p>
+        <h1 class="display-4">{{no}}</h1>
+    </div>
+</div>
+
+<form action="/admin_panel" method="POST">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
