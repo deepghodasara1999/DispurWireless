@@ -2283,6 +2283,7 @@
                   {{user.contact}}
                 </span>
                 <form action="/profile" method="post" id="mobile_singleForm">
+                  <input type="hidden" name="flag" value="contact">
                   <input type="text" id="mobile_inputText" name="phn" autofocus value={{user.contact}}>
                   <div class="mobile_submit_and_cancel_btn">
                     <input type="image" id="mobile_submit_control">
@@ -2382,6 +2383,7 @@
                   {!Street}
                 </span>
                 <form action="/profile" method="post" id="street_singleForm">
+                  <input type="hidden" name="flag" value="street">
                   <input type="text" name="street" id="street_inputText" name="" autofocus value="{!Street}">
                   <div class="street_submit_and_cancel_btn">
                     <input type="image" id="street_submit_control">

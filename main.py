@@ -65,9 +65,9 @@ def register():
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
 	if(request.method == "POST"):
-		if(request.form["phn"]):
+		if(request.form["flag"]=="contact"):
 			CurrentUser.usrObj.contact = request.form.get('phn')
-		elif (request.form["street"]):
+		elif (request.form["flag"]=="street"):
 			print("I am here")
 	return render_template('profile.html',user=CurrentUser.usrObj)
 
