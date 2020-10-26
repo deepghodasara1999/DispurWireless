@@ -5,188 +5,250 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style type="text/css">
-    *{
-  box-sizing: border-box;
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css">
+  #plan{
+  width:945px;
+  height:200px;
+  background-color:#f6f6f6;
+  background: -webkit-linear-gradient(left, #efefef, #e6e6e6);
+background: -moz-linear-gradient(left, #efefef, #e6e6e6);
+background: -ms-linear-gradient(left, #efefef, #e6e6e6);
+background: -o-linear-gradient(left, #efefef, #e6e6e6);
+  margin: 0 auto;
+margin-top: 30px;
+  
+  
+  
 }
 
-body{
-  font-family: Montserrat,sans-serif;
-  background-image: linear-gradient(0deg, "white", #fad730);
-  height: 100vh;
-  margin: 50px;
+.title{
+  width:200px;
+  height:200px;
+  background-color: #a3a3a3;
+  float:left;
+   -webkit-transition: background-color 0.3s ease-out 0.3s, width 0.3s ease-out 0.3s;
+    -moz-transition:background-color width 0.3s ease-out 0.3s, width 0.3s ease-out 0.3s;
+    -o-transition: background-color width 0.3s ease-out 0.3s, width 0.3s ease-out 0.3s;
+    transition: background-color width 0.3s ease-out 0.3s, width 0.3s ease-out 0.3s;
   
-  >h1, >p{
-    text-align:center;
-  }
-  
-  >h1{
-    margin: 40px;
-    color: #000000;
-  }
-  
-  >p{
-    font-size:20px;
-    margin-top: 10px;
-    margin-bottom: 40px;
-  }
 }
 
-.custom-table{
-  box-shadow: 5px 5px 5px -5px rgba(0,0,0, 0.5); 
-  width: 100%;
-  overflow: auto;
+.title h1{
   
-  table{
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td{
-    text-align: center;
-    padding: 15px;
-    width: calc(100% / 5);
-  }
+  color:white;
+  font-family:'Open Sans';
+  text-transform:uppercase;
+  font-size:30px;
+  font-weight: 100;
+  text-align:center;
+  margin:0px;
+  padding:0px;
+  padding-top:35px;
+}
 
-  thead{
-    tr{
-      th, td{
-        color: #ffffff;
-        font-weight: bold;
-      }
-      
-      &:nth-child(1){
-        background-color: #E91E63;
-        th{
-          font-size: 1.2rem;
-          text-transform: uppercase;
-        }  
-      }
-      
-      &:nth-child(2){
-        background-color: #c13a68;
-        td{
-          font-size: 2.2rem;
-          padding: 20px 15px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-      }
-      
-      th:nth-child(1){
-        color: #ffffff;
-        background-color: #000000;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      }
-      
-      th:nth-child(2), td:nth-child(1){
-        background-color: rgba(0,0,0,0.1)
-      }
-      th:nth-child(3), td:nth-child(2){
-        background-color: rgba(0,0,0,0.2)
-      }
-      th:nth-child(4), td:nth-child(3){
-        background-color: rgba(0,0,0,0.3)
-      }
-      th:nth-child(5), td:nth-child(4){
-        background-color: rgba(0,0,0,0.4)
-      }
-    }
-  }
+.title h1 span{
+  font-size:10px;
+}
+
+.title p{
+  color:white;
+  font-family:'Open Sans';
+  text-transform:uppercase;
+  font-size:40px;
+  font-weight:bold;
+  text-align:center;
+  margin:0px;
+  padding:0px;
   
-  tbody{
-    tr{
-      &:nth-child(odd){
-        background-color: #e0e0e0;
-      }
-      
-      &:nth-child(even){
-        background-color: #eeeeee;
-      }
-      
-      &:not(:last-child) td{
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
-      }
-      
-      td{
-        &:nth-child(odd){
-          background-color: rgba(0,0,0,0.05)
-        }
-        
-        &:first-child{
-          color: #ffffff;
-          background-color: #000000;
-          font-weight: bold;
-        }
-      }
-    }
-  }
+}
+
+.title:hover{
+  background-color:#d63240;
+  width:230px;
+  -webkit-transition: background-color 0.3s ease-out 0.3s, width 0.3s ease-out 0.3s;
+    -moz-transition:background-color width 0.3s ease-out 0.3s, width 0.3s ease-out 0.3s;
+    -o-transition: background-color width 0.3s ease-out 0.3s, width 0.3s ease-out 0.3s;
+    transition: background-color width 0.3s ease-out 0.3s, width 0.3s ease-out 0.3s;
 }
 
 
-  </style>
-  <title></title>
+.containDetails{
+  max-width: 640px;
+  float:left;
+  margin-top: 29px;
+  padding-left: 46px;
+}
+
+.details li{
+  display:inline-block;
+  margin:0px;
+  padding:0px;
+  font-size: 30px;
+  color: #6a6a6a;
+  font-family:'Open Sans';
+  font-weight:bold;
+  text-align: center;
+  padding-left: 48px;
+}
+
+.first{
+  padding:0px!important;
+}
+
+.details{
+  padding:0px;
+  float:left;
+}
+.details li span{
+  font-size:15px;
+  text-transform:uppercase;
+}
+
+.details li span:before{
+ content: '\a' ; 
+ white-space: pre;  
+}
+
+.select{
+  margin-top: 73px;
+  margin-left: 14px;
+}
+.end{
+  width: 150px;
+  height: 200px;
+  background-color: #efefef;  
+  float: left;
+  position: relative;
+  left: 64px;
+ 
+}
+
+.button-pill {
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+-ms-border-radius: 50px;
+-o-border-radius: 50px;
+border-radius: 50px;
+}
+
+.button {
+-webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+-moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+background-color: #eeeeee;
+background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbfbfb), color-stop(100%, #e1e1e1));
+background: -webkit-linear-gradient(top, #fbfbfb, #e1e1e1);
+background: -moz-linear-gradient(top, #fbfbfb, #e1e1e1);
+background: -o-linear-gradient(top, #fbfbfb, #e1e1e1);
+background: linear-gradient(top, #fbfbfb, #e1e1e1);
+display: -moz-inline-stack;
+display: inline-block;
+vertical-align: middle;
+zoom: 1;
+border: 1px solid #d4d4d4;
+height: 32px;
+line-height: 32px;
+padding: 0px 25.6px;
+font-weight: 300;
+font-size: 14px;
+font-family:'Open Sans';
+color: #666666;
+text-shadow: 0 1px 1px white;
+margin: 0;
+text-decoration: none;
+text-align: center;
+}
+
+.button-flat-royal {
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+-webkit-transition-property: background;
+-moz-transition-property: background;
+-o-transition-property: background;
+transition-property: background;
+-webkit-transition-duration: 0.3s;
+-moz-transition-duration: 0.3s;
+-o-transition-duration: 0.3s;
+transition-duration: 0.3s;
+background: #d63240;
+color: white;
+text-shadow: none;
+border: none;
+}
+</style>
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:Condensed" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
+   
 
-<h1 align="center">Pricing Table</h1>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:Condensed" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+<div id="plan">
+  <div class="title">
+    <h1>₹399 <span>/month</span></h1>
+    <p>Kids</p>
 
-<div class="custom-table">
-  <table align="center">
-    <thead>
-      <tr>
-        <th rowspan="2">Data Plans</th>
-        <th>Bronze</th>
-        <th>Silver</th>
-        <th>Gold</th>
-        <th>Platinum</th>
-      </tr>
-      <tr>
-        <td>₹500</td>
-        <td>₹100</td>
-        <td>₹1500</td>
-        <td>₹2500</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Talktime</td>
-        <td>1000 Mins.</td>
-        <td>1100 Mins.</td>
-        <td>1200 Mins.</td>
-        <td>2000 Mins.</td>
-      </tr>
-      <tr>
-        <td>Data</td>
-        <td>10 GB</td>
-        <td>15 GB</td>
-        <td>20 GB</td>
-        <td>40 GB</td>
-      </tr>
-      <tr>
-        <td>Data Rollover</td>
-        <td>No</td>
-        <td>No</td>
-        <td>Upto 100 GB</td>
-        <td>Upto 150 GB</td>
-      </tr>
-      <tr>
-        <td>Validity</td>
-        <td>1 Month</td>
-        <td>1 Month</td>
-        <td>1 Month</td>
-        <td>1.5 Month</td>
-      </tr>
-      <tr>
-        <td>Roaming</td>
-        <td>Free</td>
-        <td>Free</td>
-        <td>Free</td>
-        <td>Free</td>
-      </tr>
-    </tbody>
-  </table>
+  </div>
+<div class="containDetails">
+<ul class="details">
+  <li class="first">2 <span>Accounts</span></li>
+  <li>10mb<span>Speed</span></li>
+  <li>1 <span>Validity</span></li>
+  <li>500GB<span>Data</span></li>
+</ul>
+  </div>
+  <div class="end">
+    <div class="select">
+    <a href="#" class="button button-flat-royal button-pill">Select Plan</a>
+    </div></div>
+</div>
+
+<div id="plan">
+  <div class="title">
+    <h1>₹799 <span>/month</span></h1>
+    <p>Men</p>
+
+  </div>
+<div class="containDetails">
+<ul class="details">
+  <li class="first">4<span>Accounts</span></li>
+  <li>20mb<span>Speed</span></li>
+  <li>1 <span>Validity</span></li>
+  <li>2500GB<span>Data</span></li>
+</ul>
+  </div>
+  <div class="end">
+    <div class="select">
+    <a href="#" class="button button-flat-royal button-pill">Select Plan</a>
+    </div></div>
+</div>
+
+<div id="plan">
+  <div class="title">
+    <h1>₹1199 <span>/month</span></h1>
+    <p>Legend</p>
+
+  </div>
+<div class="containDetails">
+<ul class="details">
+  <li class="first">5 <span>Accounts</span></li>
+  <li>1gpbs<span>Speed</span></li>
+  <li>1 <span>Validity</span></li>
+  <li>5000GB<span>Data</span></li>
+</ul>
+  </div>
+  <div class="end">
+    <div class="select">
+    <a href="#" class="button button-flat-royal button-pill">Select Plan</a>
+    </div></div>
 </div>
 </body>
-
 </html>
 {% endblock %}
