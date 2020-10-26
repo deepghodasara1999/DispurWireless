@@ -1,7 +1,7 @@
 import pymysql
 pymysql.install_as_MySQLdb()
 
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -31,31 +31,35 @@ def home():
 @app.route("/login",  methods=['GET', 'POST'])
 def login():
 	if(request.method == "POST"):
-		return profile()
+		username = request.form.get('email')
+		password = request.form.get('pwd')
+
+
+
+		return redirect("/profile")
 	else:
 		return render_template('login.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
 	if(request.method == "POST"):
-		c_id = 12345
+
 		fname = request.form.get('fname')
 		lname = request.form.get('lname')
 		contact = request.form.get('contact')
 		email = request.form.get('email')
 		pwd = request.form.get('pwd')
 
-		usr = Registration(c_id,fname,lname,contact,email,pwd)
+		usr = Registration(fname,lname,contact,email,pwd)
 		db.session.add(usr)
 		db.session.commit()
 
 		return render_template('login.html')
-
 	else:
 		return render_template('register.html')
 
 @app.route("/profile")
 def profile():
-	return render_template('profile.html')
+	 return render_template('profile.html')
 
 app.run(debug=True)
