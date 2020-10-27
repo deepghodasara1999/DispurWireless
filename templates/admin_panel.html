@@ -36,6 +36,10 @@
     .title {
         font-size: 1.5rem;
     }
+
+    #warning {
+        color: #a31600
+    }
 </style>
 {% endblock %}
 
@@ -62,29 +66,57 @@
     </form>
 </div>
 
-{% if flag==1 %}
-<div class="container text-center mt-3 mb-5" id="user" display="none">
-    {% for user in list %}
-        {% if user.customer_id==id %}
-            {% set found=1 %}
-            <ul class="list-group list-group-flush mt-3">
-                <li class="list-group-item"><strong>Customer Id : </strong>{{user.customer_id}}</li>
-                <li class="list-group-item"><strong>First Name : </strong>{{user.first_name}}</li>
-                <li class="list-group-item"><strong>Last Name : </strong>{{user.last_name}}</li>
-                <li class="list-group-item"><strong>Mobile No : </strong>{{user.mobile_no}}</li>
-                <li class="list-group-item"><strong>Email Id : </strong>{{user.email}}</li>
-            </ul>
-            <button class="btn btn-outline-danger mb-3 mt-2" type="button" id="search_btn"><b>Delete This Entry</b></button>
-        {% endif %}
-    {% endfor %}
-
-    {% if found==0 %}
+{% if flag==1 %} <!-- for show serch output -->
+<div class="container text-center mt-3 mb-5" id="user">
+    {% if user==0 %} <!-- if no data found -->
     <ul class="list-group list-group-flush mt-3">
-        <li class="list-group-item"><strong>No Such Customer Available</li>
+        <li id="warning" class="list-group-item"><strong>No Customer Available for Customer Id : {{ id }}</li>
     </ul>
+    {% else %} <!-- if data found -->
+    <ul class="list-group list-group-flush mt-3">
+        <li class="list-group-item"><strong>Customer Id : </strong>{{user.customer_id}}</li>
+        <li class="list-group-item"><strong>First Name : </strong>{{user.first_name}}</li>
+        <li class="list-group-item"><strong>Last Name : </strong>{{user.last_name}}</li>
+        <li class="list-group-item"><strong>Mobile No : </strong>{{user.mobile_no}}</li>
+        <li class="list-group-item"><strong>Email Id : </strong>{{user.email}}</li>
+    </ul>
+    <button class="btn btn-outline-danger mb-3 mt-2" type="button" data-toggle="modal" data-target="#exampleModal"
+        id="search_btn"><b>Delete This Entry</b></button>
     {% endif %}
-    
 </div>
 {% endif %}
+
+{% if flag==2 %} <!-- for show delete output -->
+<div class="container text-center mt-3 mb-5" id="user" display="none">
+    <ul class="list-group list-group-flush mt-3">
+        <li id="warning" class="list-group-item"><strong>Data removed for Customer Id : {{ id }}</li>
+    </ul>
+</div>
+{% endif %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                This will permenently delete all data of customer for<br>Customer Id : {{ id }}<br>
+                Are you still want to delete?
+            </div>
+            <div class="modal-footer">
+                <form action="/admin_panel" method="POST">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancle</button>
+                    <button type="submit" name="form_flag" value="delete" class="btn btn-outline-danger">Delete</button></form>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

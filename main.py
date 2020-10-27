@@ -62,6 +62,7 @@ class CurrentAdmin:
 	adminObj = None
 	total= None
 	userObjs = None
+	givenId = None
 
 
 @app.route("/")
@@ -130,9 +131,7 @@ def admin():
 		if(str(u.id) == str(id) and u.password == password):
 			print("2")
 			CurrentAdmin.adminObj = u
-			users = Customer.query.all()
 			rows = Customer.query.filter().count()
-			CurrentAdmin.userObjs = users
 			CurrentAdmin.total = rows
 			return redirect("/admin_panel")
 		else:
@@ -146,9 +145,24 @@ def admin():
 def admin_panel():
 	if (request.method == "POST"):
 		if request.form["form_flag"]=="search":
-			print("I am here")
+			print("i am in search")
 			given_id = int(request.form.get('given_id'))
-			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 1, id=given_id, list = CurrentAdmin.userObjs)
+			CurrentAdmin.givenId = given_id
+			user = Customer.query.filter_by(customer_id=given_id).first()
+			if user is None:
+				user = 0
+			else:
+				CurrentAdmin.userObjs = user
+			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 1, id=given_id, user = user)
+		elif request.form["form_flag"]=="delete":
+			print("I am in delete")
+			db.session.delete(CurrentAdmin.userObjs)
+			db.session.commit()
+			rows = Customer.query.filter().count()
+			CurrentAdmin.total = rows
+			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 2, id=CurrentAdmin.givenId)
+		else:
+			print("i am in else")
 	else:
 		return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 0)
 
