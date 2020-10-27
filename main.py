@@ -143,8 +143,8 @@ def admin():
 
 @app.route("/admin_panel", methods=['GET', 'POST'])
 def admin_panel():
-	if (request.method == "POST"):
-		if request.form["form_flag"]=="search":
+	if (request.method == "POST"):  #request from form
+		if request.form["form_flag"]=="search": #search
 			print("i am in search")
 			given_id = int(request.form.get('given_id'))
 			CurrentAdmin.givenId = given_id
@@ -154,16 +154,16 @@ def admin_panel():
 			else:
 				CurrentAdmin.userObjs = user
 			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 1, id=given_id, user = user)
-		elif request.form["form_flag"]=="delete":
+		elif request.form["form_flag"]=="delete": #delete
 			print("I am in delete")
 			db.session.delete(CurrentAdmin.userObjs)
 			db.session.commit()
 			rows = Customer.query.filter().count()
 			CurrentAdmin.total = rows
 			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 2, id=CurrentAdmin.givenId)
-		else:
+		else: 
 			print("i am in else")
-	else:
+	else: # first render
 		return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 0)
 
 app.run(debug=True)
