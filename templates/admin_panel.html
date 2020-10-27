@@ -142,6 +142,38 @@
         </div>
     </form>
 
+    <br><br>
+
+    {% if(flag==11) %}
+
+    <form style="text-align: center;width: 30%; margin-left: 35%;" method="post" action="/admin_panel">
+
+  <div>
+    <label>Plan Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="plan_name" value={{plan.name}}>
+
+    <label>Plan Price</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="plan_price" value={{plan.price}}>
+
+    <label>Plan Accounts</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="plan_account" value={{plan.account}}>
+
+    <label>Plan Speed</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="plan_speed" value={{plan.speed}}>
+
+    <label>Plan Validity</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="plan_validity" value={{plan.validity}}>
+
+    <label>Plan Data</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="plan_data" value={{plan.data}}>
+
+  
+  <button type="submit" name="form_flag" value="plan_update" class="btn btn-primary mt-3">Save Changes</button>
+
+  <button type="submit" name="form_flag" value="plan_delete" class="btn btn-danger mt-3">Remove Plan</button>
+  </div>
+</form>
+{%endif%}
 </div>
 
 <!-- New Plan Modal -->
@@ -154,31 +186,32 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form method="post" action="/admin_panel">
+                <input type="hidden" name="form_flag" value="plan_add">
             <div class="modal-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Plan Name :</label>
-                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <input type="text" class="form-control" id="exampleInputEmail1"  name="plan_name" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Price :</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1">
+                      <input type="text" class="form-control"  name="plan_price" id="exampleInputPassword1">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Account Type :</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1">
+                      <label for="exampleInputPassword1">Account :</label>
+                      <input type="text" class="form-control"  name="plan_account" id="exampleInputPassword1">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Speed :</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1">
+                      <input type="text" class="form-control"  name="plan_speed" id="exampleInputPassword1">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Validity :</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1">
+                      <input type="text" class="form-control"  name="plan_validity" id="exampleInputPassword1">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Data :</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1">
+                      <input type="text" class="form-control"  name="plan_data" id="exampleInputPassword1">
                     </div>
             </div>
             <div class="modal-footer">

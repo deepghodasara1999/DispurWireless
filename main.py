@@ -32,6 +32,8 @@ class Registration(db.Model):
 	city = db.Column(db.String, nullable=True)
 	state = db.Column(db.String, nullable=True)
 	pincode = db.Column(db.String, nullable=True)
+	plan_name = db.Column(db.String, nullable=True)
+	expiry_date = db.Column(db.String, nullable=True)
 
 	def __init__(self,fname,lname,contact,email,pwd):
 		self.fname = fname
@@ -142,6 +144,11 @@ def register():
 	else:
 		return render_template('register.html')
 
+@app.route("/status", methods=['GET', 'POST'])
+def status():
+	plan = Plan.query.filter_by(name=CurrentUser.usrObj.plan_name).first()
+	return render_template("status.html",plan=plan,date=CurrentUser.usrObj.expiry_date)
+
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
 	if(request.method == "POST"):
@@ -173,10 +180,6 @@ def plans():
 	users = Plan.query.all()
 	return render_template('plans.html',users=users)
 
-@app.route("/status")
-def status():
-	return render_template('status.html')
-
 @app.route("/admin", methods=['GET', 'POST'])
 def admin():
 	if (request.method == "POST"):
@@ -200,6 +203,7 @@ def admin():
 
 @app.route("/admin_panel", methods=['GET', 'POST'])
 def admin_panel():
+	plan = Plan(None, None, None, None, None, None)
 	if (request.method == "POST"):  #request from form
 		if request.form["form_flag"]=="search": #search
 			print("i am in search")
@@ -210,17 +214,59 @@ def admin_panel():
 				user = 0
 			else:
 				CurrentAdmin.userObjs = user
-			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 1, id=given_id, user = user)
+			return render_template("admin_panel.html", plan=plan, no = CurrentAdmin.total, flag = 1, id=given_id, user = user)
+
 		elif request.form["form_flag"]=="delete": #delete
 			print("I am in delete")
 			db.session.delete(CurrentAdmin.userObjs)
 			db.session.commit()
 			rows = Registration.query.filter().count()
 			CurrentAdmin.total = rows
-			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 2, id=CurrentAdmin.givenId)
+			return render_template("admin_panel.html", plan=plan, no = CurrentAdmin.total, flag = 2, id=CurrentAdmin.givenId)
+
+		elif request.form["form_flag"]=="plan_search":
+			ID = request.form.get('plan_id')
+			plan = Plan.query.filter_by(name=ID).first()
+			return render_template("admin_panel.html",plan=plan, flag = 11, no = CurrentAdmin.total)
+
+		elif request.form["form_flag"]=="plan_update":
+			plan = Plan.query.filter_by(name=request.form.get('plan_name')).first()
+			plan.name = request.form.get('plan_name')
+			plan.price = request.form.get('plan_price')
+			plan.speed = request.form.get('plan_speed')
+			plan.account = request.form.get('plan_account')
+			plan.validity = request.form.get('plan_validity')
+			plan.data = request.form.get('plan_data')
+
+			print(plan.name)
+			print(plan.price)
+			print(plan.speed)
+
+			db.session.commit()
+			return redirect("/plans")
+
+		elif request.form["form_flag"]=="plan_add":
+			plan.name = request.form.get('plan_name')
+			plan.price = request.form.get('plan_price')
+			plan.speed = request.form.get('plan_speed')
+			plan.account = request.form.get('plan_account')
+			plan.validity = request.form.get('plan_validity')
+			plan.data = request.form.get('plan_data')
+
+			db.session.add(plan)
+
+			db.session.commit()
+			return redirect("/plans")
+
+		elif request.form["form_flag"]=="plan_delete":
+			plan = Plan.query.filter_by(name=request.form.get('plan_name')).first()
+			db.session.delete(plan)
+			db.session.commit()
+			return redirect("/plans")
+
 		else:
 			print("i am in else")
 	else: # first render
-		return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 0)
+		return render_template("admin_panel.html", plan=plan, no = CurrentAdmin.total, flag = 0)
 
 app.run(debug=True)
