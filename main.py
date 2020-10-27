@@ -56,6 +56,27 @@ class Plan(db.Model):
 		self.validity = validity
 		self.data = data
 
+class Admin(db.Model):
+	__tablename__='admin'
+	id = db.Column(db.String, primary_key=True)
+	fname = db.Column(db.String, nullable=False)
+	lname = db.Column(db.String, nullable=False)
+	email = db.Column(db.String, nullable=False)
+	password = db.Column(db.String, nullable=False)
+
+	def __init__(self,id,fname,lname,email,password):
+		self.id = id
+		self.fname = fname
+		self.lname = lname
+		self.email = email
+		self.password = password
+
+class CurrentAdmin:
+	adminObj = None
+	total= None
+	userObjs = None
+	givenId = None
+
 class CurrentUser:
 	usrObj =None
 
@@ -84,21 +105,6 @@ def login():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-	# if(request.method == "POST"):
-	# 	fname = request.form.get('fname')
-	# 	lname = request.form.get('lname')
-	# 	contact = request.form.get('contact')
-	# 	email = request.form.get('email')
-	# 	pwd = request.form.get('pwd')
-	#
-	# 	usr = Registration(fname,lname,contact,email,pwd)
-	# 	db.session.add(usr)
-	# 	db.session.commit()
-	#
-	# 	return render_template('login.html')
-	# else:
-	# 	return render_template('register.html')
-
 	if (request.method == "POST"):
 		if request.form["btn"] == "register":
 			fname = request.form.get('fname')
@@ -170,5 +176,51 @@ def plans():
 @app.route("/status")
 def status():
 	return render_template('status.html')
+
+@app.route("/admin", methods=['GET', 'POST'])
+def admin():
+	if (request.method == "POST"):
+		print("1")
+		id = request.form.get('id')
+		password = request.form.get('pwd')
+
+		u = Admin.query.filter_by(id=id).first()
+		if(str(u.id) == str(id) and u.password == password):
+			print("2")
+			CurrentAdmin.adminObj = u
+			rows = Registration.query.filter().count()
+			CurrentAdmin.total = rows
+			return redirect("/admin_panel")
+		else:
+			print("3")
+			return render_template('admin_login.html')
+	else:
+		print("4")
+		return render_template("admin_login.html")
+
+@app.route("/admin_panel", methods=['GET', 'POST'])
+def admin_panel():
+	if (request.method == "POST"):  #request from form
+		if request.form["form_flag"]=="search": #search
+			print("i am in search")
+			given_id = int(request.form.get('given_id'))
+			CurrentAdmin.givenId = given_id
+			user = Registration.query.filter_by(customer_id=given_id).first()
+			if user is None:
+				user = 0
+			else:
+				CurrentAdmin.userObjs = user
+			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 1, id=given_id, user = user)
+		elif request.form["form_flag"]=="delete": #delete
+			print("I am in delete")
+			db.session.delete(CurrentAdmin.userObjs)
+			db.session.commit()
+			rows = Registration.query.filter().count()
+			CurrentAdmin.total = rows
+			return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 2, id=CurrentAdmin.givenId)
+		else:
+			print("i am in else")
+	else: # first render
+		return render_template("admin_panel.html", no = CurrentAdmin.total, flag = 0)
 
 app.run(debug=True)
