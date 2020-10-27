@@ -56,28 +56,31 @@
     <p class="title">Search Customers By Customer Ids</p>
     <form action="/admin_panel" method="POST">
         <input type="hidden" name="form_flag" value="search">
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 ml-5">
             <input type="text" class="form-control" name="given_id" placeholder="Enter Customer Id Here...."
                 aria-label="Enter Customer Id Here" aria-describedby="button-addon2">
             <div class="input-group-append">
-                <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary mr-5" type="submit">Search</button>
             </div>
         </div>
     </form>
 </div>
 
-{% if flag==1 %} <!-- for show serch output -->
+{% if flag==1 %}
+<!-- for show serch output -->
 <div class="container text-center mt-3 mb-5" id="user">
-    {% if user==0 %} <!-- if no data found -->
+    {% if user==0 %}
+    <!-- if no data found -->
     <ul class="list-group list-group-flush mt-3">
         <li id="warning" class="list-group-item"><strong>No Customer Available for Customer Id : {{ id }}</li>
     </ul>
-    {% else %} <!-- if data found -->
+    {% else %}
+    <!-- if data found -->
     <ul class="list-group list-group-flush mt-3">
         <li class="list-group-item"><strong>Customer Id : </strong>{{user.c_id}}</li>
         <li class="list-group-item"><strong>First Name : </strong>{{user.fname}}</li>
         <li class="list-group-item"><strong>Last Name : </strong>{{user.lname}}</li>
-        <li class="list-group-item"><strong>Mobile No : </strong>{{user.contact}}</li>
+        <li class="list-group-item"><strong>Mobile No : </strong>{{user.contat}}</li>
         <li class="list-group-item"><strong>Email Id : </strong>{{user.email}}</li>
     </ul>
     <button class="btn btn-outline-danger mb-3 mt-2" type="button" data-toggle="modal" data-target="#exampleModal"
@@ -86,7 +89,8 @@
 </div>
 {% endif %}
 
-{% if flag==2 %} <!-- for show delete output -->
+{% if flag==2 %}
+<!-- for show delete output -->
 <div class="container text-center mt-3 mb-5" id="user" display="none">
     <ul class="list-group list-group-flush mt-3">
         <li id="warning" class="list-group-item"><strong>Data removed for Customer Id : {{ id }}</li>
@@ -113,7 +117,135 @@
             <div class="modal-footer">
                 <form action="/admin_panel" method="POST">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancle</button>
-                    <button type="submit" name="form_flag" value="delete" class="btn btn-outline-danger">Delete</button></form>
+                    <button type="submit" name="form_flag" value="delete" class="btn btn-outline-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
+<!-- Tariff Plan Management portal -->
+
+<div class="container text-center jumbotron mb-5">
+    <p class="title">Tariff Plan Management</p>
+    <button class="btn btn-outline-dark mt-2 mb-4" type="button" data-toggle="modal" data-target="#new_plan"><b>Add New
+            Plan</b></button>
+    <form action="/admin_panel" method="POST">
+        <input type="hidden" name="form_flag" value="plan_search">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control ml-5" name="plan_id" placeholder="Enter Plan Id Here...."
+                aria-label="Enter Customer Id Here" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary mr-5" type="submit">Remove or Edit Plan Details</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!-- New Plan Modal -->
+<div class="modal fade" id="new_plan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add new plan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+            <div class="modal-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Plan Name :</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Price :</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Account Type :</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Speed :</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Validity :</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Data :</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancle</button>
+                <button type="submit" class="btn btn-primary">Add Plan</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ----------- -->
+
+{% if flag==3 %}
+<!-- for show serch output -->
+<div class="container text-center mt-3 mb-5" id="user">
+    {% if plan==0 %}
+    <!-- if no data found -->
+    <ul class="list-group list-group-flush mt-3">
+        <li id="warning" class="list-group-item"><strong>No Customer Available for Customer Id : {{ plan_id }}</li>
+    </ul>
+    {% else %}
+    <!-- if data found -->
+    <ul class="list-group list-group-flush mt-3">
+        <li class="list-group-item"><strong>Plan Id : </strong>{{plan.id}}</li>
+        <li class="list-group-item"><strong>Plan Name : </strong>{{plan.name}}</li>
+        <li class="list-group-item"><strong>Price : </strong>{{plan.price}}</li>
+        <li class="list-group-item"><strong>Account : </strong>{{plan.account}}</li>
+        <li class="list-group-item"><strong>Speed : </strong>{{plan.speed}}</li>
+        <li class="list-group-item"><strong>Validity : </strong>{{plan.validity}}</li>
+        <li class="list-group-item"><strong>Data : </strong>{{plan.data}}</li>
+    </ul>
+    <button class="btn btn-outline-danger mb-3 mt-2" type="button" data-toggle="modal" data-target="#PlanDeleteModal"
+        id="search_btn"><b>Delete This Plan</b></button>
+    {% endif %}
+</div>
+{% endif %}
+
+{% if flag==4 %}
+<!-- for show delete output -->
+<div class="container text-center mt-3 mb-5" id="user" display="none">
+    <ul class="list-group list-group-flush mt-3">
+        <li id="warning" class="list-group-item"><strong>Data removed for Plan Id : {{ plan_id }}</li>
+    </ul>
+</div>
+{% endif %}
+
+<div class="modal fade" id="PlanDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                This will permenently delete all data of plan for<br>Plan Id : {{ plan_id }}<br>
+                Are you still want to delete?
+            </div>
+            <div class="modal-footer">
+                <form action="/admin_panel" method="POST">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancle</button>
+                    <button type="submit" name="form_flag" value="delete_plan" class="btn btn-outline-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>
