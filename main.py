@@ -205,7 +205,7 @@ def admin_panel():
 			print("i am in search")
 			given_id = int(request.form.get('given_id'))
 			CurrentAdmin.givenId = given_id
-			user = Registration.query.filter_by(customer_id=given_id).first()
+			user = Registration.query.filter_by(c_id=given_id).first()
 			if user is None:
 				user = 0
 			else:
