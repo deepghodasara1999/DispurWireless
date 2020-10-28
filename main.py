@@ -117,15 +117,15 @@ def register():
 			customerObj = Registration(fname,lname,contact,email,pwd)
 			Verify.customerObj = customerObj
 
-			OTP = math.floor(random.random() * 1000000)
-			mail.send_message('Email Verification',
-							  recipients=[email, ],
-							  body="Your OTP is : " + str(OTP)
-							  )
-			Verify.CustomerOTP = OTP
+			if(pwd == request.form.get('rpwd')):
+				OTP = math.floor(random.random() * 1000000)
+				mail.send_message('Email Verification',recipients=[email, ],body="Your OTP is : " + str(OTP))
+				Verify.CustomerOTP = OTP
 			##--> code for invalid id
 
-			return render_template('verify.html')
+				return render_template('verify.html')
+			else:
+				return render_template('register.html')
 
 		else:
 			if request.form.get('otp') == str(Verify.CustomerOTP):
@@ -147,7 +147,7 @@ def register():
 @app.route("/status", methods=['GET', 'POST'])
 def status():
 	plan = Plan.query.filter_by(name=CurrentUser.usrObj.plan_name).first()
-	return render_template("status.html",plan=plan,date=CurrentUser.usrObj.expiry_date)
+	return render_template("status.html",plan=plan,user=CurrentUser.usrObj)
 
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
