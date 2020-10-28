@@ -129,7 +129,6 @@ def register():
 
 		else:
 			if request.form.get('otp') == str(Verify.CustomerOTP):
-				print("I am here")
 				db.session.add(Verify.customerObj)
 				db.session.commit()
 				##--> code for send coustomer Id
@@ -183,22 +182,18 @@ def plans():
 @app.route("/admin", methods=['GET', 'POST'])
 def admin():
 	if (request.method == "POST"):
-		print("1")
 		id = request.form.get('id')
 		password = request.form.get('pwd')
 
 		u = Admin.query.filter_by(id=id).first()
 		if(str(u.id) == str(id) and u.password == password):
-			print("2")
 			CurrentAdmin.adminObj = u
 			rows = Registration.query.filter().count()
 			CurrentAdmin.total = rows
 			return redirect("/admin_panel")
 		else:
-			print("3")
 			return render_template('admin_login.html')
 	else:
-		print("4")
 		return render_template("admin_login.html")
 
 @app.route("/admin_panel", methods=['GET', 'POST'])
