@@ -201,7 +201,6 @@ def admin_panel():
 	plan = Plan(None, None, None, None, None, None)
 	if (request.method == "POST"):  #request from form
 		if request.form["form_flag"]=="search": #search
-			print("i am in search")
 			given_id = int(request.form.get('given_id'))
 			CurrentAdmin.givenId = given_id
 			user = Registration.query.filter_by(c_id=given_id).first()
@@ -212,7 +211,6 @@ def admin_panel():
 			return render_template("admin_panel.html", plan=plan, no = CurrentAdmin.total, flag = 1, id=given_id, user = user)
 
 		elif request.form["form_flag"]=="delete": #delete
-			print("I am in delete")
 			db.session.delete(CurrentAdmin.userObjs)
 			db.session.commit()
 			rows = Registration.query.filter().count()
@@ -258,9 +256,6 @@ def admin_panel():
 			db.session.delete(plan)
 			db.session.commit()
 			return redirect("/plans")
-
-		else:
-			print("i am in else")
 	else: # first render
 		return render_template("admin_panel.html", plan=plan, no = CurrentAdmin.total, flag = 0)
 
